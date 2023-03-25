@@ -3,7 +3,7 @@ By exercising the Licensed Rights (defined below), You accept and agree to be bo
 </p>
 <br>
 <br>
-Copyright (c) 2023, festere/Hardening_Windows11
+Copyright (c) 2023, festere/Web_Scraping
 <br>
 <br>
 
