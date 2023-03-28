@@ -146,7 +146,7 @@ with open('data.json') as file:
 
 
 # Load the map of the cities from the JSON file
-with open('cities.json') as bordeaux:
+with open('bordeaux.json') as bordeaux:
     cities_data = json.load(bordeaux)
 
 # Create a folium.Map object with the coordinates of the center of the map and the initial zoom level
