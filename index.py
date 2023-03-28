@@ -1,31 +1,31 @@
 import requests
 import json
 from bs4 import BeautifulSoup
+import urllib3
+from http.client import responses
+from unidecode import unidecode
 
-# URL of the page to scrape
-url = 'https://www.tripadvisor.fr/Attraction_Review-g187079-d10344773-Reviews-Le_reseau_de_transports_TBM_Tramway-Bordeaux_Gironde_Nouvelle_Aquitaine.html'
+#Target URL
+url = "https://www.petitfute.com/v1524-bordeaux-33000/c1122-voyage-transports/c1145-avion-bateau-bus-train-taxi-parking/c1154-transport-urbain/98794-tbm.html"
 
-# Send a GET request to the URL
+#Get the HTTP code
+http = urllib3.PoolManager()
+request = http.request('GET', url)
+http_status = request.status
+http_status_description = responses[http_status]
+print("code status:" , http_status , http_status_description)
+
+
+#Parse the HTML content of the page
 response = requests.get(url)
-
-# Parse the HTML content of the page using BeautifulSoup
 soup = BeautifulSoup(response.content, 'html.parser')
+spans = soup.find_all('div', {'class': 'comment-truncate'})
 
-# Find the <div> element with the specified class
-div = soup.find('div', {'class': 'biGQs _P pZUbB KxBGd'})
-
-# Find all <span> elements with the specified class within the <div>
-spans = div.find_all('span', {'class': 'yCeTE'})
-
-# Convert the list of <span> elements to a list of their text content
-spans_text = [span.get_text() for span in spans]
-
-# Create a dictionary containing the list of <span> texts
-data = {'text': spans_text}
-
-# Export the data as JSON to a file
-with open('output.json', 'w') as file:
-    json.dump(data, file)
-
-
-print(response)
+count = 0
+with open('data.json', 'a') as f:
+    for span in spans:
+        spans_text = [span.get_text()]
+        element = ["id:", count, ";" , spans_text]
+        json.dump(element, f)
+        f.write('\n')
+        count += 1
