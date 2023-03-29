@@ -311,7 +311,7 @@ with open('bordeaux.json', "r") as bordeaux:
     else:
         feature['properties']['fill'] = "#FF0000"
 
-        feature = cities_data['features'][13]
+    feature = cities_data['features'][13]
     if Bordeaux_Saint_Jean_count == 0:
         feature['properties']['fill'] = "#FFFFFF"
     elif Bordeaux_Saint_Jean_count == 1:
@@ -329,7 +329,7 @@ with open('bordeaux.json', "r") as bordeaux:
     else:
         feature['properties']['fill'] = "#FF0000"
 
-        feature = cities_data['features'][24]
+    feature = cities_data['features'][24]
     if Bordeaux_Saint_Jean_count == 0:
         feature['properties']['fill'] = "#FFFFFF"
     elif Bordeaux_Saint_Jean_count == 1:
@@ -347,7 +347,7 @@ with open('bordeaux.json', "r") as bordeaux:
     else:
         feature['properties']['fill'] = "#FF0000"
 
-        feature = cities_data['features'][25]
+    feature = cities_data['features'][25]
     if Bordeaux_Saint_Jean_count == 0:
         feature['properties']['fill'] = "#FFFFFF"
     elif Bordeaux_Saint_Jean_count == 1:
@@ -491,7 +491,7 @@ with open('bordeaux.json', "r") as bordeaux:
     else:
         feature['properties']['fill'] = "#FF0000"
 
-    feature = cities_data['features'][15]
+    feature = cities_data['features'][16]
     if Haillan_count == 0:
         feature['properties']['fill'] = "#FFFFFF"
     elif Haillan_count == 1:
@@ -671,7 +671,7 @@ with open('bordeaux.json', "r") as bordeaux:
     else:
         feature['properties']['fill'] = "#FF0000"
 
-    feature = cities_data['features'][16]
+    feature = cities_data['features'][17]
     if Bassens_count == 0:
         feature['properties']['fill'] = "#FFFFFF"
     elif Bassens_count == 1:
