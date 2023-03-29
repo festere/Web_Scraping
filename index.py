@@ -293,24 +293,23 @@ with open('data.json') as file:
 with open('bordeaux.json', "r") as bordeaux:
     cities_data = json.load(bordeaux)
 
-    for feature in cities_data['features']:
-        for feature['properties']['code'] in "33000" or "33100" or "33300" or "33800":
-            if Bordeaux_Saint_Jean_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Bordeaux_Saint_Jean_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Bordeaux_Saint_Jean_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Bordeaux_Saint_Jean_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Bordeaux_Saint_Jean_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Bordeaux_Saint_Jean_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Bordeaux_Saint_Jean_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
+    feature = cities_data['features'][0]
+    if Bordeaux_Saint_Jean_count == 0:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Bordeaux_Saint_Jean_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Bordeaux_Saint_Jean_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Bordeaux_Saint_Jean_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Bordeaux_Saint_Jean_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Bordeaux_Saint_Jean_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Bordeaux_Saint_Jean_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
 
         for feature['properties']['code'] in "33110":
             if Bousqua_count == 0:
@@ -711,3 +710,10 @@ with open('bordeaux.json', "r") as bordeaux:
     # save the map to an html file
     with open("result.json", 'w+') as f:
         json.dump(cities_data, f, indent=2)
+
+if Merignac_count == 1:
+    print("1")
+elif Merignac_count == 2:
+    print("2")
+elif Merignac_count == 3:
+    print("3")
