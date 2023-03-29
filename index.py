@@ -293,9 +293,9 @@ with open('data.json') as file:
 with open('bordeaux.json', "r") as bordeaux:
     cities_data = json.load(bordeaux)
 
-    feature = cities_data['features'][0]
+    feature = cities_data['features'][6]
     if Bordeaux_Saint_Jean_count == 0:
-        feature['properties']['fill'] = "#FF6C6C"
+        feature['properties']['fill'] = "#FFFFFF"
     elif Bordeaux_Saint_Jean_count == 1:
         feature['properties']['fill'] = "#FFDCDC"
     elif Bordeaux_Saint_Jean_count == 2:
@@ -311,401 +311,457 @@ with open('bordeaux.json', "r") as bordeaux:
     else:
         feature['properties']['fill'] = "#FF0000"
 
-        for feature['properties']['code'] in "33110":
-            if Bousqua_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Bousqua_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Bousqua_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Bousqua_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Bousqua_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Bousqua_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Bousqua_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
+        feature = cities_data['features'][13]
+    if Bordeaux_Saint_Jean_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Bordeaux_Saint_Jean_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Bordeaux_Saint_Jean_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Bordeaux_Saint_Jean_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Bordeaux_Saint_Jean_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Bordeaux_Saint_Jean_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Bordeaux_Saint_Jean_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
 
-        for feature['properties']['code'] in "33127":
-            if Martignas_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Martignas_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Martignas_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Martignas_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Martignas_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Martignas_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Martignas_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
-            
-        for feature['properties']['code'] in "33130":
-            if Begles_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Begles_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Begles_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Begles_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Begles_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Begles_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Begles_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
+        feature = cities_data['features'][24]
+    if Bordeaux_Saint_Jean_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Bordeaux_Saint_Jean_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Bordeaux_Saint_Jean_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Bordeaux_Saint_Jean_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Bordeaux_Saint_Jean_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Bordeaux_Saint_Jean_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Bordeaux_Saint_Jean_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
 
-        for feature['properties']['code'] in "33140":
-            if Villenave_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Villenave_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Villenave_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Villenave_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Villenave_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Villenave_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Villenave_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
+        feature = cities_data['features'][25]
+    if Bordeaux_Saint_Jean_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Bordeaux_Saint_Jean_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Bordeaux_Saint_Jean_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Bordeaux_Saint_Jean_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Bordeaux_Saint_Jean_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Bordeaux_Saint_Jean_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Bordeaux_Saint_Jean_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
 
-        for feature['properties']['code'] in "33150":
-            if Cenon_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Cenon_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Cenon_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Cenon_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Cenon_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Cenon_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Cenon_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
+    feature = cities_data['features'][14]
+    if Bousqua_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Bousqua_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Bousqua_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Bousqua_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Bousqua_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Bousqua_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Bousqua_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
 
-        for feature['properties']['code'] in "33160":
-            if Saint_Medard_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Saint_Medard_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Saint_Medard_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Saint_Medard_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Saint_Medard_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Saint_Medard_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Saint_Medard_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
+    feature = cities_data['features'][10]
+    if Martignas_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Martignas_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Martignas_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Martignas_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Martignas_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Martignas_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Martignas_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
 
-        for feature['properties']['code'] in "33170":
-            if Gradignan_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Gradignan_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Gradignan_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Gradignan_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Gradignan_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Gradignan_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Gradignan_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
-            
-        for feature['properties']['code'] in "33185":
-            if Haillan_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Haillan_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Haillan_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Haillan_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Haillan_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Haillan_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Haillan_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
+    feature = cities_data['features'][7]
+    if Begles_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Begles_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Begles_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Begles_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Begles_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Begles_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Begles_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
 
-        for feature['properties']['code'] in "33200":
-            if Cauderan_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Cauderan_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Cauderan_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Cauderan_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Cauderan_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Cauderan_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Cauderan_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
-            
-        for feature['properties']['code'] in "33270":
-            if Floirac_Bouliac_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Floirac_Bouliac_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Floirac_Bouliac_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Floirac_Bouliac_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Floirac_Bouliac_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Floirac_Bouliac_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Floirac_Bouliac_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
+    feature = cities_data['features'][21]
+    if Villenave_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Villenave_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Villenave_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Villenave_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Villenave_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Villenave_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Villenave_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
 
-        for feature['properties']['code'] in "33290":
-            if Parempuyre_Blanquefort_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Parempuyre_Blanquefort_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Parempuyre_Blanquefort_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Parempuyre_Blanquefort_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Parempuyre_Blanquefort_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Parempuyre_Blanquefort_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Parempuyre_Blanquefort_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
+    feature = cities_data['features'][4]
+    if Cenon_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Cenon_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Cenon_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Cenon_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Cenon_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Cenon_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Cenon_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
 
-        for feature['properties']['code'] in "33310":
-            if Lormont_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Lormont_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Lormont_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Lormont_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Lormont_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Lormont_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Lormont_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
+    feature = cities_data['features'][1]
+    if Saint_Medard_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Saint_Medard_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Saint_Medard_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Saint_Medard_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Saint_Medard_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Saint_Medard_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Saint_Medard_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
 
-        for feature['properties']['code'] in "33320":
-            if Eysines_taillan_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Eysines_taillan_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Eysines_taillan_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Eysines_taillan_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Eysines_taillan_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Eysines_taillan_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Eysines_taillan_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
+    feature = cities_data['features'][9]
+    if Gradignan_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Gradignan_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Gradignan_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Gradignan_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Gradignan_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Gradignan_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Gradignan_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
+
+    feature = cities_data['features'][15]
+    if Haillan_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Haillan_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Haillan_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Haillan_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Haillan_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Haillan_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Haillan_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
+
+    feature = cities_data['features'][3]
+    if Cauderan_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Cauderan_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Cauderan_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Cauderan_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Cauderan_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Cauderan_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Cauderan_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
+
+    feature = cities_data['features'][5]
+    if Floirac_Bouliac_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Floirac_Bouliac_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Floirac_Bouliac_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Floirac_Bouliac_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Floirac_Bouliac_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Floirac_Bouliac_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Floirac_Bouliac_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
+
+    feature = cities_data['features'][18]
+    if Parempuyre_Blanquefort_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Parempuyre_Blanquefort_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Parempuyre_Blanquefort_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Parempuyre_Blanquefort_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Parempuyre_Blanquefort_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Parempuyre_Blanquefort_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Parempuyre_Blanquefort_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
+
+    feature = cities_data['features'][19]
+    if Lormont_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Lormont_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Lormont_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Lormont_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Lormont_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Lormont_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Lormont_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
+
+    feature = cities_data['features'][23]
+    if Eysines_taillan_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Eysines_taillan_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Eysines_taillan_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Eysines_taillan_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Eysines_taillan_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Eysines_taillan_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Eysines_taillan_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
+
+    feature = cities_data['features'][8]
+    if Antigues_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Antigues_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Antigues_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Antigues_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Antigues_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Antigues_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Antigues_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
+
+    feature = cities_data['features'][11]
+    if Talence_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Talence_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Talence_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Talence_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Talence_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Talence_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Talence_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
+
+    feature = cities_data['features'][20]
+    if Lagrave_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Lagrave_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Lagrave_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Lagrave_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Lagrave_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Lagrave_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Lagrave_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
+
+    feature = cities_data['features'][0]
+    if Bruges_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Bruges_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Bruges_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Bruges_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Bruges_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Bruges_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Bruges_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
+
+    feature = cities_data['features'][16]
+    if Bassens_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Bassens_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Bassens_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Bassens_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Bassens_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Bassens_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Bassens_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
+
+    feature = cities_data['features'][22]
+    if Carbon_Blanc_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Carbon_Blanc_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Carbon_Blanc_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Carbon_Blanc_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Carbon_Blanc_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Carbon_Blanc_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Carbon_Blanc_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
+
+    feature = cities_data['features'][2]
+    if Pessac_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Pessac_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Pessac_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Pessac_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Pessac_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Pessac_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Pessac_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
+
+    feature = cities_data['features'][15]
+    if Merignac_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Merignac_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Merignac_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Merignac_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Merignac_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Merignac_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Merignac_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
+
+    feature = cities_data['features'][12]
+    if Ambès_count == 0:
+        feature['properties']['fill'] = "#FFFFFF"
+    elif Ambès_count == 1:
+        feature['properties']['fill'] = "#FFDCDC"
+    elif Ambès_count == 2:
+        feature['properties']['fill'] = "#FFB7B7"
+    elif Ambès_count == 3:
+        feature['properties']['fill'] = "#FF8686"
+    elif Ambès_count == 4:
+        feature['properties']['fill'] = "#FF6C6C"
+    elif Ambès_count == 5:
+        feature['properties']['fill'] = "#FF5D5D"
+    elif Ambès_count == 6:
+        feature['properties']['fill'] = "#FF3131"
+    else:
+        feature['properties']['fill'] = "#FF0000"
+
         
-        for feature['properties']['code'] in "33370":
-            if Antigues_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Antigues_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Antigues_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Antigues_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Antigues_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Antigues_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Antigues_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
-
-        for feature['properties']['code'] in "33400":
-            if Talence_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Talence_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Talence_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Talence_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Talence_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Talence_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Talence_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
-
-        for feature['properties']['code'] in "33440":
-            if Lagrave_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Lagrave_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Lagrave_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Lagrave_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Lagrave_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Lagrave_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Lagrave_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
-
-        for feature['properties']['code'] in "33520":
-            if Bruges_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Bruges_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Bruges_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Bruges_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Bruges_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Bruges_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Bruges_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
-            
-        for feature['properties']['code'] in "33530":
-            if Bassens_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Bassens_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Bassens_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Bassens_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Bassens_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Bassens_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Bassens_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
-
-        for feature['properties']['code'] in "33560":
-            if Carbon_Blanc_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Carbon_Blanc_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Carbon_Blanc_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Carbon_Blanc_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Carbon_Blanc_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Carbon_Blanc_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Carbon_Blanc_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
-
-        for feature['properties']['code'] in "33600":
-            if Pessac_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Pessac_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Pessac_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Pessac_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Pessac_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Pessac_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Pessac_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
-
-        for feature['properties']['code'] in "33700":
-            if Merignac_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Merignac_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Merignac_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Merignac_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Merignac_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Merignac_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Merignac_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
-
-        for feature['properties']['code'] in "33810":
-            if Ambès_count == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif Ambès_count == 1:
-                feature['properties']['fill'] = "#FFDCDC"
-            elif Ambès_count == 2:
-                feature['properties']['fill'] = "#FFB7B7"
-            elif Ambès_count == 3:
-                feature['properties']['fill'] = "#FF8686"
-            elif Ambès_count == 4:
-                feature['properties']['fill'] = "#FF6C6C"
-            elif Ambès_count == 5:
-                feature['properties']['fill'] = "#FF5D5D"
-            elif Ambès_count == 6:
-                feature['properties']['fill'] = "#FF3131"
-            else:
-                feature['properties']['fill'] = "#FF0000"
 
     # save the map to an html file
     with open("result.json", 'w+') as f:
