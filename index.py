@@ -307,6 +307,9 @@ def ExecuteCode():
 
         count_dict = {
             Bordeaux_Saint_Jean_count: 6,
+            Bordeaux_Saint_Jean_count: 16,
+            Bordeaux_Saint_Jean_count: 24,
+            Bordeaux_Saint_Jean_count: 25,
             Bousqua_count: 14,
             Martignas_count: 10,
             Begles_count: 7,
@@ -331,12 +334,14 @@ def ExecuteCode():
             Ambès_count: 12
         }
 
+        #add fill color #ffffff to all the features
+        for feature in cities_data['features']:
+            feature['properties']['fill'] = "#ffffff"
 
+        #change the fill color of the features with the count
         for city, feature_idxs in count_dict.items():
             feature = cities_data['features'][feature_idxs]
-            if city == 0:
-                feature['properties']['fill'] = "#FFFFFF"
-            elif city == 1:
+            if city == 1:
                 feature['properties']['fill'] = "#FFDCDC"
             elif city == 2:
                 feature['properties']['fill'] = "#FFB7B7"
@@ -348,6 +353,8 @@ def ExecuteCode():
                 feature['properties']['fill'] = "#FF5D5D"
             elif city == 6:
                 feature['properties']['fill'] = "#FF3131"
+            elif city >= 6:
+                feature['properties']['fill'] = "#FF0000"
 
             # save the map to an html file
         with open("result.json", 'w+') as f:
@@ -377,7 +384,6 @@ def StartCode():
         ExecuteCode()
         root.destroy()
     
-
 
 Button(
     root,
