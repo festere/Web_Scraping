@@ -766,10 +766,3 @@ with open('bordeaux.json', "r") as bordeaux:
     # save the map to an html file
     with open("result.json", 'w+') as f:
         json.dump(cities_data, f, indent=2)
-
-if Merignac_count == 1:
-    print("1")
-elif Merignac_count == 2:
-    print("2")
-elif Merignac_count == 3:
-    print("3")
