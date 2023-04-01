@@ -13,30 +13,6 @@ from tkinter.messagebox import *
 import customtkinter
 
 
-root = customtkinter.CTk()
-root.title("OnePoint - Scraping")
-customtkinter.set_appearance_mode("dark")
-customtkinter.set_default_color_theme("blue")
-root.geometry('400x300')
-root.iconbitmap('./bin/icon.ico')
-
-
-label = customtkinter.CTkLabel(root, text="URL:")
-label.pack()
-url_value = customtkinter.CTkEntry(root)
-url_value.pack()
-
-label = customtkinter.CTkLabel(root, text="Balise:")
-label.pack()
-balise_value = customtkinter.CTkEntry(root)
-balise_value.pack()
-
-label = customtkinter.CTkLabel(root, text="Classe:")
-label.pack()
-class_value = customtkinter.CTkEntry(root)
-class_value.pack()
-
-
 def ExecuteCode():
     #Parse the HTML content of the page
     response = requests.get(url_value.get())
@@ -369,7 +345,9 @@ def HTTPerror():
     request = http.request('GET', url_value.get())
     http_status = request.status
     http_status_description = responses[http_status]
-    print("code status:" , http_status , http_status_description)
+
+    label_httpstatus = customtkinter.CTkLabel(root, text="Status server: " + http_status)
+    label_httpstatus.pack(side="bottom, left")
 
     if http_status != 200:
         showwarning("Connection au site impossible")
@@ -386,10 +364,35 @@ def StartCode():
         HTTPerror()
         ExecuteCode()
         root.destroy()
-    
+
+
+root = customtkinter.CTk()
+root.title("OnePoint - Scraping")
+customtkinter.set_appearance_mode("dark")
+customtkinter.set_default_color_theme("blue")
+root.geometry('600x300')
+root.resizable(False, False)
+
+
+label = customtkinter.CTkLabel(root, text="URL:")
+label.pack()
+url_value = customtkinter.CTkEntry(root, width= 500)
+url_value.pack()
+
+label = customtkinter.CTkLabel(root, text="Balise:")
+label.pack()
+balise_value = customtkinter.CTkEntry(root, width= 100)
+balise_value.pack()
+
+label = customtkinter.CTkLabel(root, text="Classe:")
+label.pack()
+class_value = customtkinter.CTkEntry(root, width= 200)
+class_value.pack()
 
 Button = customtkinter.CTkButton (root, text="Commencer le scaping", command=StartCode)
 #padding top
 Button.pack(padx=10, pady=30)
+
+
 
 root.mainloop()
