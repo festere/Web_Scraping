@@ -308,7 +308,23 @@ def HTTPerror():
 ##########################################################################################################################################################################
 # DEF to check if every input as been filled
 ##########################################################################################################################################################################
-def StartCode():
+def StartCodeURL():
+    if url_value.get() == "":
+        showwarning("Attention", "Veuillez entrer une URL")
+    else:
+        HTTPerror()
+        ExecuteCode()
+
+def StartCodeBalise():
+    if url_value.get() == "":
+        showwarning("Attention", "Veuillez entrer une URL")
+    elif balise_value.get() == "":
+        showwarning("Attention", "Veuillez entrer une balise")
+    else:
+        HTTPerror()
+        ExecuteCode()
+
+def StartCodeClasse():
     if url_value.get() == "":
         showwarning("Attention", "Veuillez entrer une URL")
     elif balise_value.get() == "":
@@ -322,35 +338,86 @@ def StartCode():
 
 
 ##########################################################################################################################################################################
+##########################################################################################################################################################################
 # GUI
+##########################################################################################################################################################################
 ##########################################################################################################################################################################
 root = customtkinter.CTk()
 root.title("OnePoint - Scraping")
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("blue")
-root.geometry('600x300')
+root.geometry('650x400')
 root.resizable(False, False)
 
-
-label = customtkinter.CTkLabel(root, text="URL:")
+###################################################################################
+# Frame for the settings
+###################################################################################
+root.tabview = customtkinter.CTkFrame(root)
+root.tabview.grid(row=0, column=0, padx=(20, 0), pady=(20, 0), sticky="nsew")
+# Label for the title
+label = customtkinter.CTkLabel(root.tabview, text="Paramètres:")
 label.pack()
-url_value = customtkinter.CTkEntry(root, width= 500)
-url_value.pack()
+# Label and Entry for the type of content to scrap
+root.tabview = customtkinter.CTkTabview(root, width=250)
+root.tabview.grid(row=0, column=1, padx=(20, 0), pady=(20, 0), sticky="nsew")
+root.tabview.add("URL")
+root.tabview.add("Balise")
+root.tabview.add("Classe")
+# configure grid of individual tabs
+root.tabview.tab("URL").grid_columnconfigure(0, weight=1)
+root.tabview.tab("Balise").grid_columnconfigure(0, weight=1)
+root.tabview.tab("Classe").grid_columnconfigure(0, weight=1)
 
-label = customtkinter.CTkLabel(root, text="Balise:")
-label.pack()
-balise_value = customtkinter.CTkEntry(root, width= 100)
-balise_value.pack()
+###################################################################################
+# Frame for the input "URL"
+###################################################################################
+# Label and Entry for the URL
+label = customtkinter.CTkLabel(root.tabview.tab("URL"), text="URL:")
+url_value = customtkinter.CTkEntry(root.tabview.tab("URL"), width= 500)
+label.grid()
+url_value.grid()
+# Button to start the scraping
+Button = customtkinter.CTkButton(root.tabview.tab("URL"), text="Commencer le scaping", command=StartCodeURL)
+Button.grid(padx=10, pady=30)
 
-label = customtkinter.CTkLabel(root, text="Classe:")
-label.pack()
-class_value = customtkinter.CTkEntry(root, width= 200)
-class_value.pack()
+###################################################################################
+# Frame for the input "Balise"
+###################################################################################
+# Label and Entry for the URL
+label = customtkinter.CTkLabel(root.tabview.tab("Balise"), text="URL:")
+url_value_balise = customtkinter.CTkEntry(root.tabview.tab("Balise"), width= 500)
+label.grid()
+url_value_balise.grid()
+# Label and Entry for the balise
+label = customtkinter.CTkLabel(root.tabview.tab("Balise"), text="Balise:")
+balise_value = customtkinter.CTkEntry(root.tabview.tab("Balise"), width= 100)
+label.grid()
+balise_value.grid()
+# Button to start the scraping
+Button = customtkinter.CTkButton(root.tabview.tab("Balise"), text="Commencer le scaping", command=StartCodeBalise)
+Button.grid(padx=10, pady=30)
 
-Button = customtkinter.CTkButton (root, text="Commencer le scaping", command=StartCode)
-#padding top
-Button.pack(padx=10, pady=30)
-
+###################################################################################
+# Frame for the input "Classe"
+###################################################################################
+# Label and Entry for the URL
+label = customtkinter.CTkLabel(root.tabview.tab("Classe"), text="URL:")
+url_value = customtkinter.CTkEntry(root.tabview.tab("Classe"), width= 500)
+label.grid()
+url_value.grid()
+# Label and Entry for the balise
+label = customtkinter.CTkLabel(root.tabview.tab("Classe"), text="Balise:")
+balise_value = customtkinter.CTkEntry(root.tabview.tab("Classe"), width= 100)
+label.grid()
+balise_value.grid()
+# Label and Entry for the class
+label = customtkinter.CTkLabel(root.tabview.tab("Classe"), text="Classe:")
+class_value = customtkinter.CTkEntry(root.tabview.tab("Classe"), width= 200)
+label.grid()
+class_value.grid()
+# Button to start the scraping
+Button = customtkinter.CTkButton(root.tabview.tab("Classe"), text="Commencer le scaping", command=StartCodeClasse)
+Button.grid(padx=10, pady=30)
 
 
 root.mainloop()
