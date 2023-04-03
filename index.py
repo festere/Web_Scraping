@@ -13,20 +13,67 @@ from tkinter.messagebox import *
 import customtkinter
 import os
 
+##########################################################################################################################################################################
+# DEF to check if every input as been filled
+##########################################################################################################################################################################
+def StartCodeURL():
+    http = urllib3.PoolManager()
+    request = http.request('GET', url_value_URL.get())
+    http_status = request.status
+    if http_status != 200:
+        showwarning("Connection au site impossible")
+    elif url_value_URL.get() == "":
+        showwarning("Attention", "Veuillez entrer une URL")
+    else:
+        # Parse the HTML content of the page
+        response = requests.get(url_value_URL.get())
+        soup = BeautifulSoup(response.content, 'html.parser')
+        # Parse only the content we want
+        spans = soup
+        ExecuteCode(spans)
 
+def StartCodeBalise():
+    http = urllib3.PoolManager()
+    request = http.request('GET', url_value_Balise.get())
+    http_status = request.status
+    if http_status != 200:
+        showwarning("Connection au site impossible")
+    elif url_value_Balise.get() == "":
+        showwarning("Attention", "Veuillez entrer une URL")
+    elif balise_value_Balise.get() == "":
+        showwarning("Attention", "Veuillez entrer une balise")
+    else:
+        # Parse the HTML content of the page
+        response = requests.get(url_value_Balise.get())
+        soup = BeautifulSoup(response.content, 'html.parser')
+        # Parse only the content we want
+        spans = soup.find_all(balise_value_Balise.get())
+        ExecuteCode(spans)
+
+def StartCodeClasse():
+    http = urllib3.PoolManager()
+    request = http.request('GET', url_value_Classe.get())
+    http_status = request.status
+    if http_status != 200:
+        showwarning("Connection au site impossible")
+    elif url_value_Classe.get() == "":
+        showwarning("Attention", "Veuillez entrer une URL")
+    elif balise_value_Classe.get() == "":
+        showwarning("Attention", "Veuillez entrer une balise")
+    elif class_value_Classe.get() == "":
+        showwarning("Attention", "Veuillez entrer une classe")
+    else:
+        # Parse the HTML content of the page
+        response = requests.get(url_value_Classe.get())
+        soup = BeautifulSoup(response.content, 'html.parser')
+        # Parse only the content we want
+        spans = soup.find_all(balise_value_Classe.get(), {'class': class_value_Classe.get()})
+        ExecuteCode(spans)
 
 ##########################################################################################################################################################################
 # DEF of parsing
 ##########################################################################################################################################################################
-def ExecuteCode():
-    # Parse the HTML content of the page
-    response = requests.get(url_value.get())
-    soup = BeautifulSoup(response.content, 'html.parser')
-
-    # Parse only the content we want
-    spans = soup.find_all(balise_value.get(), {'class': class_value.get()})
-
-
+def ExecuteCode(spans):
     # Export to a JSON file
     datalocation = os.getcwd()
     datalocation = os.path.join(datalocation, "Web_Scraping\\result", "data.json")
@@ -144,7 +191,6 @@ def ExecuteCode():
 
             elif word in good:
                 good_count += 1
-
             elif word in bad:
                 bad_count += 1
 
@@ -292,52 +338,6 @@ def ExecuteCode():
 
 
 ##########################################################################################################################################################################
-# DEF to get the HTTP status code and show a warning if the HTTP status code is not 200
-##########################################################################################################################################################################
-def HTTPerror():
-    http = urllib3.PoolManager()
-    request = http.request('GET', url_value.get())
-    http_status = request.status
-
-    if http_status != 200:
-        showwarning("Connection au site impossible")
-        root.destroy()
-
-
-
-##########################################################################################################################################################################
-# DEF to check if every input as been filled
-##########################################################################################################################################################################
-def StartCodeURL():
-    if url_value.get() == "":
-        showwarning("Attention", "Veuillez entrer une URL")
-    else:
-        HTTPerror()
-        ExecuteCode()
-
-def StartCodeBalise():
-    if url_value.get() == "":
-        showwarning("Attention", "Veuillez entrer une URL")
-    elif balise_value.get() == "":
-        showwarning("Attention", "Veuillez entrer une balise")
-    else:
-        HTTPerror()
-        ExecuteCode()
-
-def StartCodeClasse():
-    if url_value.get() == "":
-        showwarning("Attention", "Veuillez entrer une URL")
-    elif balise_value.get() == "":
-        showwarning("Attention", "Veuillez entrer une balise")
-    elif class_value.get() == "":
-        showwarning("Attention", "Veuillez entrer une classe")
-    else:
-        HTTPerror()
-        ExecuteCode()
-
-
-
-##########################################################################################################################################################################
 ##########################################################################################################################################################################
 # GUI
 ##########################################################################################################################################################################
@@ -346,17 +346,26 @@ root = customtkinter.CTk()
 root.title("OnePoint - Scraping")
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("blue")
-root.geometry('650x400')
+root.geometry('800x600')
 root.resizable(False, False)
 
+
 ###################################################################################
-# Frame for the settings
+###################################################################################
+# Tabview for the settings
+###################################################################################
 ###################################################################################
 root.tabview = customtkinter.CTkFrame(root)
 root.tabview.grid(row=0, column=0, padx=(20, 0), pady=(20, 0), sticky="nsew")
 # Label for the title
 label = customtkinter.CTkLabel(root.tabview, text="Paramètres:")
 label.pack()
+
+###################################################################################
+###################################################################################
+# Tabview for the input
+###################################################################################
+###################################################################################
 # Label and Entry for the type of content to scrap
 root.tabview = customtkinter.CTkTabview(root, width=250)
 root.tabview.grid(row=0, column=1, padx=(20, 0), pady=(20, 0), sticky="nsew")
@@ -373,9 +382,9 @@ root.tabview.tab("Classe").grid_columnconfigure(0, weight=1)
 ###################################################################################
 # Label and Entry for the URL
 label = customtkinter.CTkLabel(root.tabview.tab("URL"), text="URL:")
-url_value = customtkinter.CTkEntry(root.tabview.tab("URL"), width= 500)
+url_value_URL = customtkinter.CTkEntry(root.tabview.tab("URL"), width= 500)
 label.grid()
-url_value.grid()
+url_value_URL.grid()
 # Button to start the scraping
 Button = customtkinter.CTkButton(root.tabview.tab("URL"), text="Commencer le scaping", command=StartCodeURL)
 Button.grid(padx=10, pady=30)
@@ -385,14 +394,14 @@ Button.grid(padx=10, pady=30)
 ###################################################################################
 # Label and Entry for the URL
 label = customtkinter.CTkLabel(root.tabview.tab("Balise"), text="URL:")
-url_value_balise = customtkinter.CTkEntry(root.tabview.tab("Balise"), width= 500)
+url_value_Balise = customtkinter.CTkEntry(root.tabview.tab("Balise"), width= 500)
 label.grid()
-url_value_balise.grid()
+url_value_Balise.grid()
 # Label and Entry for the balise
 label = customtkinter.CTkLabel(root.tabview.tab("Balise"), text="Balise:")
-balise_value = customtkinter.CTkEntry(root.tabview.tab("Balise"), width= 100)
+balise_value_Balise = customtkinter.CTkEntry(root.tabview.tab("Balise"), width= 100)
 label.grid()
-balise_value.grid()
+balise_value_Balise.grid()
 # Button to start the scraping
 Button = customtkinter.CTkButton(root.tabview.tab("Balise"), text="Commencer le scaping", command=StartCodeBalise)
 Button.grid(padx=10, pady=30)
@@ -402,22 +411,23 @@ Button.grid(padx=10, pady=30)
 ###################################################################################
 # Label and Entry for the URL
 label = customtkinter.CTkLabel(root.tabview.tab("Classe"), text="URL:")
-url_value = customtkinter.CTkEntry(root.tabview.tab("Classe"), width= 500)
+url_value_Classe = customtkinter.CTkEntry(root.tabview.tab("Classe"), width= 500)
 label.grid()
-url_value.grid()
+url_value_Classe.grid()
 # Label and Entry for the balise
 label = customtkinter.CTkLabel(root.tabview.tab("Classe"), text="Balise:")
-balise_value = customtkinter.CTkEntry(root.tabview.tab("Classe"), width= 100)
+balise_value_Classe = customtkinter.CTkEntry(root.tabview.tab("Classe"), width= 100)
 label.grid()
-balise_value.grid()
+balise_value_Classe.grid()
 # Label and Entry for the class
 label = customtkinter.CTkLabel(root.tabview.tab("Classe"), text="Classe:")
-class_value = customtkinter.CTkEntry(root.tabview.tab("Classe"), width= 200)
+class_value_Classe = customtkinter.CTkEntry(root.tabview.tab("Classe"), width= 200)
 label.grid()
-class_value.grid()
+class_value_Classe.grid()
 # Button to start the scraping
 Button = customtkinter.CTkButton(root.tabview.tab("Classe"), text="Commencer le scaping", command=StartCodeClasse)
 Button.grid(padx=10, pady=30)
+
 
 
 root.mainloop()
