@@ -55,7 +55,7 @@ def ALL_StartCode():
             response = requests.get(URL)
             soup = BeautifulSoup(response.content, 'html.parser')
             # Parse only the content we want
-            spans = soup.find_all(Balise.get(), Class_.get())
+            spans = soup.find_all(Balise, Class_)
             ExecuteCode(spans)
 
 
@@ -67,18 +67,22 @@ def ALL_StartCode():
 # One website to scrap
 ##########################################################################################################################################################################
 ##########################################################################################################################################################################
-def ONE_StartCode():
+def ONE_StartCode(selected_website):
+    URL = websites[selected_website]["URL"]
+    Balise = websites[selected_website]["Balise"]
+    Class_ = websites[selected_website]["Class"]
+
     http = urllib3.PoolManager()
-    request = http.request('GET', url_value_Classe.get())
+    request = http.request('GET', URL)
     http_status = request.status
     if http_status != 200:
         showwarning("Connection au site impossible")
     else:
         # Parse the HTML content of the page
-        response = requests.get(url_value_Classe.get())
+        response = requests.get(URL)
         soup = BeautifulSoup(response.content, 'html.parser')
         # Parse only the content we want
-        spans = soup.find_all(balise_value_Classe.get(), {'class': class_value_Classe.get()})
+        spans = soup.find_all(Balise, Class_)
         ExecuteCode(spans)
 
 
@@ -465,11 +469,13 @@ root.tabview.grid(row=0, column=0, padx=(20, 0), pady=(20, 0), sticky="nsew")
 label = customtkinter.CTkLabel(root.tabview, text="Un site:")
 label.pack()
 
-root.optionmenu = customtkinter.CTkOptionMenu(root, dynamic_resizing=False, values=["Value 1", "Value 2", "Value Long Long Long"])
-root.optionmenu.grid(row=0, column=0, padx=20, pady=(20, 10))
+website_names = list(websites.keys()) # Get the names of the websites
+optionmenu = customtkinter.CTkOptionMenu(root.tabview, values=website_names)
+optionmenu.pack()
 
-Button = customtkinter.CTkButton(root.tabview, text="Commencer le scaping", command=ONE_StartCode)
-Button.pack()
+#Button to take start ONE_StartCode with the website selected
+button = customtkinter.CTkButton(root.tabview, text="Commencer le scaping", command=lambda: ONE_StartCode(optionmenu.get()))
+button.pack(side = "bottom")
 
 
 
