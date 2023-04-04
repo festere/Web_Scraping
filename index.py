@@ -13,10 +13,88 @@ from tkinter.messagebox import *
 import customtkinter
 import os
 
+
+
+
+
+websites = {
+  "PetitFute": {
+    "URL": "https://www.petitfute.com/v1524-bordeaux-33000/c1122-voyage-transports/c1145-avion-bateau-bus-train-taxi-parking/c1154-transport-urbain/98794-tbm.html",
+    "Balise": "div",
+    "Class": "comment-truncate"
+  },
+  "website2": {
+    "URL": "https://www.petitfute.com/v1524-bordeaux-33000/c1122-voyage-transports/c1145-avion-bateau-bus-train-taxi-parking/c1154-transport-urbain/98794-tbm.html",
+    "Balise": "div",
+    "Class": "comment-truncate"
+  }
+}
+
+
+
+
+
+##########################################################################################################################################################################
+##########################################################################################################################################################################
+# All websites to scrap
+##########################################################################################################################################################################
+##########################################################################################################################################################################
+def ALL_StartCode():
+    for website in websites:
+        URL = websites[website]["URL"]
+        Balise = websites[website]["Balise"]
+        Class_ = websites[website]["Class"]
+
+        http = urllib3.PoolManager()
+        request = http.request('GET', URL)
+        http_status = request.status
+        if http_status != 200:
+            showwarning("Connection au site impossible")
+        else:
+            # Parse the HTML content of the page
+            response = requests.get(URL)
+            soup = BeautifulSoup(response.content, 'html.parser')
+            # Parse only the content we want
+            spans = soup.find_all(Balise.get(), Class_.get())
+            ExecuteCode(spans)
+
+
+
+
+
+##########################################################################################################################################################################
+##########################################################################################################################################################################
+# One website to scrap
+##########################################################################################################################################################################
+##########################################################################################################################################################################
+def ONE_StartCode():
+    http = urllib3.PoolManager()
+    request = http.request('GET', url_value_Classe.get())
+    http_status = request.status
+    if http_status != 200:
+        showwarning("Connection au site impossible")
+    else:
+        # Parse the HTML content of the page
+        response = requests.get(url_value_Classe.get())
+        soup = BeautifulSoup(response.content, 'html.parser')
+        # Parse only the content we want
+        spans = soup.find_all(balise_value_Classe.get(), {'class': class_value_Classe.get()})
+        ExecuteCode(spans)
+
+
+
+
+
+##########################################################################################################################################################################
+##########################################################################################################################################################################
+# User enter the website settings to scrap
+##########################################################################################################################################################################
+##########################################################################################################################################################################
+
 ##########################################################################################################################################################################
 # DEF to check if every input as been filled
 ##########################################################################################################################################################################
-def StartCodeURL():
+def PERSONALIZED_StartCodeURL():
     http = urllib3.PoolManager()
     request = http.request('GET', url_value_URL.get())
     http_status = request.status
@@ -32,7 +110,7 @@ def StartCodeURL():
         spans = soup
         ExecuteCode(spans)
 
-def StartCodeBalise():
+def PERSONALIZED_StartCodeBalise():
     http = urllib3.PoolManager()
     request = http.request('GET', url_value_Balise.get())
     http_status = request.status
@@ -50,7 +128,7 @@ def StartCodeBalise():
         spans = soup.find_all(balise_value_Balise.get())
         ExecuteCode(spans)
 
-def StartCodeClasse():
+def PERSONALIZED_StartCodeClasse():
     http = urllib3.PoolManager()
     request = http.request('GET', url_value_Classe.get())
     http_status = request.status
@@ -69,6 +147,20 @@ def StartCodeClasse():
         # Parse only the content we want
         spans = soup.find_all(balise_value_Classe.get(), {'class': class_value_Classe.get()})
         ExecuteCode(spans)
+
+
+
+
+
+
+
+
+
+##########################################################################################################################################################################
+##########################################################################################################################################################################
+# General DEF
+##########################################################################################################################################################################
+##########################################################################################################################################################################
 
 ##########################################################################################################################################################################
 # DEF of parsing
@@ -337,33 +429,55 @@ def ExecuteCode(spans):
 
 
 
+
+
+
+
+
+
+
+##########################################################################################################################################################################
 ##########################################################################################################################################################################
 ##########################################################################################################################################################################
 # GUI
+##########################################################################################################################################################################
 ##########################################################################################################################################################################
 ##########################################################################################################################################################################
 root = customtkinter.CTk()
 root.title("OnePoint - Scraping")
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("blue")
-root.geometry('800x600')
+root.geometry('880x500')
 root.resizable(False, False)
 
 
+
+
+
 ###################################################################################
 ###################################################################################
-# Tabview for the settings
+# Tabview for "ONE websites to scrap"
 ###################################################################################
 ###################################################################################
 root.tabview = customtkinter.CTkFrame(root)
 root.tabview.grid(row=0, column=0, padx=(20, 0), pady=(20, 0), sticky="nsew")
 # Label for the title
-label = customtkinter.CTkLabel(root.tabview, text="Paramètres:")
+label = customtkinter.CTkLabel(root.tabview, text="Un site:")
 label.pack()
+
+root.optionmenu = customtkinter.CTkOptionMenu(root, dynamic_resizing=False, values=["Value 1", "Value 2", "Value Long Long Long"])
+root.optionmenu.grid(row=0, column=0, padx=20, pady=(20, 10))
+
+Button = customtkinter.CTkButton(root.tabview, text="Commencer le scaping", command=ONE_StartCode)
+Button.pack()
+
+
+
+
 
 ###################################################################################
 ###################################################################################
-# Tabview for the input
+# Tabview for "personalized website to scrap"
 ###################################################################################
 ###################################################################################
 # Label and Entry for the type of content to scrap
@@ -386,7 +500,7 @@ url_value_URL = customtkinter.CTkEntry(root.tabview.tab("URL"), width= 500)
 label.grid()
 url_value_URL.grid()
 # Button to start the scraping
-Button = customtkinter.CTkButton(root.tabview.tab("URL"), text="Commencer le scaping", command=StartCodeURL)
+Button = customtkinter.CTkButton(root.tabview.tab("URL"), text="Commencer le scaping", command=PERSONALIZED_StartCodeURL)
 Button.grid(padx=10, pady=30)
 
 ###################################################################################
@@ -403,7 +517,7 @@ balise_value_Balise = customtkinter.CTkEntry(root.tabview.tab("Balise"), width= 
 label.grid()
 balise_value_Balise.grid()
 # Button to start the scraping
-Button = customtkinter.CTkButton(root.tabview.tab("Balise"), text="Commencer le scaping", command=StartCodeBalise)
+Button = customtkinter.CTkButton(root.tabview.tab("Balise"), text="Commencer le scaping", command=PERSONALIZED_StartCodeBalise)
 Button.grid(padx=10, pady=30)
 
 ###################################################################################
@@ -425,8 +539,27 @@ class_value_Classe = customtkinter.CTkEntry(root.tabview.tab("Classe"), width= 2
 label.grid()
 class_value_Classe.grid()
 # Button to start the scraping
-Button = customtkinter.CTkButton(root.tabview.tab("Classe"), text="Commencer le scaping", command=StartCodeClasse)
+Button = customtkinter.CTkButton(root.tabview.tab("Classe"), text="Commencer le scaping", command=PERSONALIZED_StartCodeClasse)
 Button.grid(padx=10, pady=30)
+
+
+
+
+
+###################################################################################
+###################################################################################
+# Tabview for "ALL websites to scrap"
+###################################################################################
+###################################################################################
+root.tabview = customtkinter.CTkFrame(root)
+root.tabview.grid(row=0, column=2, padx=(20, 0), pady=(20, 0), sticky="nsew")
+# Label for the title
+label = customtkinter.CTkLabel(root.tabview, text="Tout les sites:")
+label.pack()
+Button = customtkinter.CTkButton(root.tabview, text="Commencer le scaping", command=ALL_StartCode)
+Button.pack()
+
+
 
 
 
