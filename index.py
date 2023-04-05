@@ -23,15 +23,17 @@ websites = {
     "Balise": "div",
     "Class": "comment-truncate"
   },
-  "website2": {
-    "URL": "https://www.petitfute.com/v1524-bordeaux-33000/c1122-voyage-transports/c1145-avion-bateau-bus-train-taxi-parking/c1154-transport-urbain/98794-tbm.html",
-    "Balise": "div",
-    "Class": "comment-truncate"
+  "TripAdvisor": {
+    "URL": "https://www.tripadvisor.fr/Attraction_Review-g187079-d10344773-Reviews-Le_reseau_de_transports_TBM_Tramway-Bordeaux_Gironde_Nouvelle_Aquitaine.html",
+    "Balise": "span",
+    "Class": "yCeTE"
   }
 }
 
 
-
+proxy = {
+    'https': 'https://51.158.63.12:3128'
+}
 
 
 ##########################################################################################################################################################################
@@ -46,13 +48,13 @@ def ALL_StartCode():
         Class_ = websites[website]["Class"]
 
         http = urllib3.PoolManager()
-        request = http.request('GET', URL)
+        request = http.request('GET', URL, timeout=10.0)
         http_status = request.status
         if http_status != 200:
             showwarning("Connection au site impossible")
         else:
             # Parse the HTML content of the page
-            response = requests.get(URL)
+            response = requests.get(URL, timeout=10.0)
             soup = BeautifulSoup(response.content, 'html.parser')
             # Parse only the content we want
             spans = soup.find_all(Balise, Class_)
@@ -73,13 +75,13 @@ def ONE_StartCode(selected_website):
     Class_ = websites[selected_website]["Class"]
 
     http = urllib3.PoolManager()
-    request = http.request('GET', URL)
+    request = http.request('GET', URL, timeout=10.0)
     http_status = request.status
     if http_status != 200:
         showwarning("Connection au site impossible")
     else:
         # Parse the HTML content of the page
-        response = requests.get(URL)
+        response = requests.get(URL, timeout=10.0)
         soup = BeautifulSoup(response.content, 'html.parser')
         # Parse only the content we want
         spans = soup.find_all(Balise, Class_)
@@ -100,7 +102,7 @@ def ONE_StartCode(selected_website):
 ##########################################################################################################################################################################
 def PERSONALIZED_StartCodeURL():
     http = urllib3.PoolManager()
-    request = http.request('GET', url_value_URL.get())
+    request = http.request('GET', url_value_URL.get(), timeout=10.0)
     http_status = request.status
     if http_status != 200:
         showwarning("Connection au site impossible")
@@ -108,7 +110,7 @@ def PERSONALIZED_StartCodeURL():
         showwarning("Attention", "Veuillez entrer une URL")
     else:
         # Parse the HTML content of the page
-        response = requests.get(url_value_URL.get())
+        response = requests.get(url_value_URL.get(), timeout=10.0)
         soup = BeautifulSoup(response.content, 'html.parser')
         # Parse only the content we want
         spans = soup
@@ -116,7 +118,7 @@ def PERSONALIZED_StartCodeURL():
 
 def PERSONALIZED_StartCodeBalise():
     http = urllib3.PoolManager()
-    request = http.request('GET', url_value_Balise.get())
+    request = http.request('GET', url_value_Balise.get(), timeout=10.0)
     http_status = request.status
     if http_status != 200:
         showwarning("Connection au site impossible")
@@ -126,15 +128,15 @@ def PERSONALIZED_StartCodeBalise():
         showwarning("Attention", "Veuillez entrer une balise")
     else:
         # Parse the HTML content of the page
-        response = requests.get(url_value_Balise.get())
+        response = requests.get(url_value_Balise.get(), timeout=10.0)
         soup = BeautifulSoup(response.content, 'html.parser')
         # Parse only the content we want
-        spans = soup.find_all(balise_value_Balise.get())
+        spans = soup.find_all(balise_value_Balise.get(), timeout=10.0)
         ExecuteCode(spans)
 
 def PERSONALIZED_StartCodeClasse():
     http = urllib3.PoolManager()
-    request = http.request('GET', url_value_Classe.get())
+    request = http.request('GET', url_value_Classe.get(), timeout=10.0)
     http_status = request.status
     if http_status != 200:
         showwarning("Connection au site impossible")
@@ -146,10 +148,10 @@ def PERSONALIZED_StartCodeClasse():
         showwarning("Attention", "Veuillez entrer une classe")
     else:
         # Parse the HTML content of the page
-        response = requests.get(url_value_Classe.get())
+        response = requests.get(url_value_Classe.get(), timeout=10.0)
         soup = BeautifulSoup(response.content, 'html.parser')
         # Parse only the content we want
-        spans = soup.find_all(balise_value_Classe.get(), {'class': class_value_Classe.get()})
+        spans = soup.find_all(balise_value_Classe.get(), {'class': class_value_Classe.get()}, timeout=10.0)
         ExecuteCode(spans)
 
 
@@ -364,7 +366,8 @@ def ExecuteCode(spans):
             "Ambès": Ambès_count
         }
         for city_name, count in city_counts.items():
-            print(f"nombre de mention de {city_name}: {count}") # Print the counts
+            print(f"nombre de mention de {city_name}: {count}")
+            label.textbox.insert("0.0", city_name + " : " + str(count) + "\n")
 
 
     # Load the map of the cities from the JSON file
@@ -562,11 +565,18 @@ root.tabview.grid(row=0, column=2, padx=(20, 0), pady=(20, 0), sticky="nsew")
 # Label for the title
 label = customtkinter.CTkLabel(root.tabview, text="Tout les sites:")
 label.pack()
+# Button to start the scraping
 Button = customtkinter.CTkButton(root.tabview, text="Commencer le scaping", command=ALL_StartCode)
-Button.pack()
+Button.pack(side = "bottom")
 
 
-
+###################################################################################
+###################################################################################
+# Tabview to show the result
+###################################################################################
+###################################################################################
+label.textbox = customtkinter.CTkTextbox(root,)
+label.textbox.grid(row=1, column=0, columnspan=3, padx=(20, 0), pady=(20, 0), sticky="nsew")
 
 
 root.mainloop()
