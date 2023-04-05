@@ -28,7 +28,22 @@ websites = {
     "URL": "https://www.tripadvisor.fr/Attraction_Review-g187079-d10344773-Reviews-Le_reseau_de_transports_TBM_Tramway-Bordeaux_Gironde_Nouvelle_Aquitaine.html",
     "Balise": "span",
     "Class": "yCeTE"
-  }
+  },
+  "PagesJaunes": {
+    "URL": "https://www.pagesjaunes.fr/pros/59035126",
+    "Balise": "div",
+    "Class": "commentaire"
+  },
+  "Telephone city": {
+    "URL": "https://www.telephone.city/transports-en-commun/tbm-bordeaux-1120766.html",
+    "Balise": "div",
+    "Class": "cmtx_comment_text"
+  },
+    "Go Work": {
+    "URL": "https://gowork.fr/transports-tbm-strasbourg",
+    "Balise": "div",
+    "Class": "review__content-container"
+}
 }
 
 
