@@ -12,6 +12,7 @@ from tkinter import *
 from tkinter.messagebox import *
 import customtkinter
 import os
+import webbrowser
 
 
 
@@ -367,7 +368,7 @@ def ExecuteCode(spans):
         }
         for city_name, count in city_counts.items():
             print(f"nombre de mention de {city_name}: {count}")
-            label.textbox.insert("0.0", city_name + " : " + str(count) + "\n")
+            label.textbox.insert("0.0", city_name + " : " + str(count) + "\n") # Display the results in the GUI
 
 
     # Load the map of the cities from the JSON file
@@ -433,6 +434,9 @@ def ExecuteCode(spans):
         maplocation = os.path.join(maplocation, "Web_Scraping\\result", "map.json")
         with open(maplocation, 'w+') as f:
             json.dump(cities_data, f, indent=2)
+
+        webbrowser.open("https://geojson.io/#map=5.28/46.563/2.071") # Open the map in the browser
+
 
 
 
