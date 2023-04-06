@@ -6,13 +6,11 @@ from http.client import responses
 from unidecode import unidecode
 from collections import Counter
 import folium
-from folium.plugins import HeatMap
 import geopandas as gpd
 from tkinter import *
 from tkinter.messagebox import *
 import customtkinter
 import os
-import webbrowser
 import random
 
 
@@ -55,6 +53,12 @@ user_agent_list = [
 user_agent = random.choice(user_agent_list)
 headers = {'User-Agent': user_agent}
 print(headers)
+
+def check_checkbox():
+    if checkbox.get() == 0: # If the checkbox is not checked
+        ONE_StartCode(optionmenu.get())
+    else: # If the checkbox is checked
+        ALL_StartCode()
 
 ##########################################################################################################################################################################
 ##########################################################################################################################################################################
@@ -497,7 +501,7 @@ root = customtkinter.CTk()
 root.title("OnePoint - Scraping")
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("blue")
-root.geometry('880x730')
+root.geometry('715x730')
 root.resizable(False, False)
 
 
@@ -512,16 +516,21 @@ root.resizable(False, False)
 root.tabview = customtkinter.CTkFrame(root)
 root.tabview.grid(row=0, column=0, padx=(20, 0), pady=(20, 0), sticky="nsew")
 # Label for the title
-label = customtkinter.CTkLabel(root.tabview, text="Un site:")
+label = customtkinter.CTkLabel(root.tabview, text="Prédéfinis:")
 label.pack()
 
-website_names = list(websites.keys()) # Get the names of the websites
+# Get the names of the website to scrap
+website_names = list(websites.keys())
 optionmenu = customtkinter.CTkOptionMenu(root.tabview, values=website_names)
 optionmenu.pack()
 
+# Checkbox to select if the user wants to scrap all the pages
+checkbox = customtkinter.CTkCheckBox(root.tabview, text="Tout les sites")
+checkbox.pack(pady=(60, 0))
+
 #Button to take start ONE_StartCode with the website selected
-button = customtkinter.CTkButton(root.tabview, text="Commencer le scaping", command=lambda: ONE_StartCode(optionmenu.get()))
-button.pack(side = "bottom")
+button = customtkinter.CTkButton(root.tabview, text="Commencer le scaping", command=check_checkbox)
+button.pack(pady=(60, 0))
 
 
 
@@ -596,21 +605,6 @@ Button.grid(padx=10, pady=30)
 
 
 
-
-
-###################################################################################
-###################################################################################
-# Tabview for "ALL websites to scrap"
-###################################################################################
-###################################################################################
-root.tabview = customtkinter.CTkFrame(root)
-root.tabview.grid(row=0, column=2, padx=(20, 0), pady=(20, 0), sticky="nsew")
-# Label for the title
-label = customtkinter.CTkLabel(root.tabview, text="Tout les sites:")
-label.pack()
-# Button to start the scraping
-Button = customtkinter.CTkButton(root.tabview, text="Commencer le scaping", command=ALL_StartCode)
-Button.pack(side = "bottom")
 
 
 ###################################################################################
