@@ -525,7 +525,7 @@ optionmenu = customtkinter.CTkOptionMenu(root.tabview, values=website_names)
 optionmenu.pack()
 
 # Checkbox to select if the user wants to scrap all the pages
-checkbox = customtkinter.CTkCheckBox(root.tabview, text="Tout les sites")
+checkbox = customtkinter.CTkCheckBox(root.tabview, text="Tous les sites")
 checkbox.pack(pady=(60, 0))
 
 #Button to take start ONE_StartCode with the website selected
