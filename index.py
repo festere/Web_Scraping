@@ -13,13 +13,14 @@ from tkinter.messagebox import *
 import customtkinter
 import os
 import webbrowser
+import random
 
 
 
 
 
 websites = {
-  "PetitFute": {
+  "Petit Fute": {
     "URL": "https://www.petitfute.com/v1524-bordeaux-33000/c1122-voyage-transports/c1145-avion-bateau-bus-train-taxi-parking/c1154-transport-urbain/98794-tbm.html",
     "Balise": "div",
     "Class": "comment-truncate"
@@ -29,7 +30,7 @@ websites = {
     "Balise": "span",
     "Class": "yCeTE"
   },
-  "PagesJaunes": {
+  "Pages Jaunes": {
     "URL": "https://www.pagesjaunes.fr/pros/59035126",
     "Balise": "div",
     "Class": "commentaire"
@@ -38,19 +39,22 @@ websites = {
     "URL": "https://www.telephone.city/transports-en-commun/tbm-bordeaux-1120766.html",
     "Balise": "div",
     "Class": "cmtx_comment_text"
-  },
-    "Go Work": {
-    "URL": "https://gowork.fr/transports-tbm-strasbourg",
-    "Balise": "div",
-    "Class": "review__content-container"
-}
+  }
 }
 
 
-proxy = {
-    'https': 'https://51.158.63.12:3128'
-}
+user_agent_list = [
+'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15',
+'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0',
+'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36',
+'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:77.0) Gecko/20100101 Firefox/77.0',
+'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36',
+]
 
+
+user_agent = random.choice(user_agent_list)
+headers = {'User-Agent': user_agent}
+print(headers)
 
 ##########################################################################################################################################################################
 ##########################################################################################################################################################################
@@ -66,15 +70,19 @@ def ALL_StartCode():
         http = urllib3.PoolManager()
         request = http.request('GET', URL, timeout=10.0)
         http_status = request.status
-        if http_status != 200:
+        print(http_status)
+        if http_status == 400:
             showwarning("Connection au site impossible")
         else:
             # Parse the HTML content of the page
-            response = requests.get(URL, timeout=10.0)
-            soup = BeautifulSoup(response.content, 'html.parser')
-            # Parse only the content we want
-            spans = soup.find_all(Balise, Class_)
-            ExecuteCode(spans)
+            try:
+                response = requests.get(URL, timeout=10.0)
+                soup = BeautifulSoup(response.content, 'html.parser')
+                # Parse only the content we want
+                spans = soup.find_all(Balise, Class_)
+                ExecuteCode(spans)
+            except:
+                showwarning("Connection au site impossible")
 
 
 
@@ -93,15 +101,17 @@ def ONE_StartCode(selected_website):
     http = urllib3.PoolManager()
     request = http.request('GET', URL, timeout=10.0)
     http_status = request.status
-    if http_status != 200:
+    print(http_status)
+    if http_status == 400:
         showwarning("Connection au site impossible")
     else:
         # Parse the HTML content of the page
-        response = requests.get(URL, timeout=10.0)
+        response = requests.get(URL, timeout=10.0, headers=headers, verify=False)
         soup = BeautifulSoup(response.content, 'html.parser')
         # Parse only the content we want
         spans = soup.find_all(Balise, Class_)
         ExecuteCode(spans)
+        showwarning("Connection au site impossible")
 
 
 
@@ -120,23 +130,28 @@ def PERSONALIZED_StartCodeURL():
     http = urllib3.PoolManager()
     request = http.request('GET', url_value_URL.get(), timeout=10.0)
     http_status = request.status
-    if http_status != 200:
+    print(http_status)
+    if http_status == 400:
         showwarning("Connection au site impossible")
     elif url_value_URL.get() == "":
         showwarning("Attention", "Veuillez entrer une URL")
     else:
         # Parse the HTML content of the page
-        response = requests.get(url_value_URL.get(), timeout=10.0)
-        soup = BeautifulSoup(response.content, 'html.parser')
-        # Parse only the content we want
-        spans = soup
-        ExecuteCode(spans)
+        try:
+            response = requests.get(url_value_URL.get(), timeout=10.0)
+            soup = BeautifulSoup(response.content, 'html.parser')
+            # Parse only the content we want
+            spans = soup
+            ExecuteCode(spans)
+        except:
+            showwarning("Connection au site impossible")
 
 def PERSONALIZED_StartCodeBalise():
     http = urllib3.PoolManager()
     request = http.request('GET', url_value_Balise.get(), timeout=10.0)
     http_status = request.status
-    if http_status != 200:
+    print(http_status)
+    if http_status == 400:
         showwarning("Connection au site impossible")
     elif url_value_Balise.get() == "":
         showwarning("Attention", "Veuillez entrer une URL")
@@ -144,17 +159,21 @@ def PERSONALIZED_StartCodeBalise():
         showwarning("Attention", "Veuillez entrer une balise")
     else:
         # Parse the HTML content of the page
-        response = requests.get(url_value_Balise.get(), timeout=10.0)
-        soup = BeautifulSoup(response.content, 'html.parser')
-        # Parse only the content we want
-        spans = soup.find_all(balise_value_Balise.get(), timeout=10.0)
-        ExecuteCode(spans)
+        try:
+            response = requests.get(url_value_Balise.get(), timeout=10.0)
+            soup = BeautifulSoup(response.content, 'html.parser')
+            # Parse only the content we want
+            spans = soup.find_all(balise_value_Balise.get(), timeout=10.0)
+            ExecuteCode(spans)
+        except:
+            showwarning("Connection au site impossible")
 
 def PERSONALIZED_StartCodeClasse():
     http = urllib3.PoolManager()
     request = http.request('GET', url_value_Classe.get(), timeout=10.0)
     http_status = request.status
-    if http_status != 200:
+    print(http_status)
+    if http_status == 400:
         showwarning("Connection au site impossible")
     elif url_value_Classe.get() == "":
         showwarning("Attention", "Veuillez entrer une URL")
@@ -164,11 +183,14 @@ def PERSONALIZED_StartCodeClasse():
         showwarning("Attention", "Veuillez entrer une classe")
     else:
         # Parse the HTML content of the page
-        response = requests.get(url_value_Classe.get(), timeout=10.0)
-        soup = BeautifulSoup(response.content, 'html.parser')
-        # Parse only the content we want
-        spans = soup.find_all(balise_value_Classe.get(), {'class': class_value_Classe.get()}, timeout=10.0)
-        ExecuteCode(spans)
+        try:
+            response = requests.get(url_value_Classe.get(), timeout=10.0)
+            soup = BeautifulSoup(response.content, 'html.parser')
+            # Parse only the content we want
+            spans = soup.find_all(balise_value_Classe.get(), {'class': class_value_Classe.get()}, timeout=10.0)
+            ExecuteCode(spans)
+        except:
+            showwarning("Connection au site impossible")
 
 
 
@@ -191,13 +213,13 @@ def ExecuteCode(spans):
     # Export to a JSON file
     datalocation = os.getcwd()
     datalocation = os.path.join(datalocation, "Web_Scraping\\result", "data.json")
-    with open(datalocation, 'a', encoding="utf-8") as f:
+    with open(datalocation, 'a', encoding='utf-8') as f:
         count = 0 # Count for the ID
         for span in spans:
             spans_text = [span.get_text()]
             idx = ["id:", count] # IDX
             element = [idx , spans_text] # IDX plus the parsed content
-            json.dump(element, f)
+            json.dump(element, f, ensure_ascii=False)
             f.write('\n')
             count += 1
 
@@ -205,6 +227,7 @@ def ExecuteCode(spans):
     with open(datalocation) as file:
         content = file.read()
         words = content.split()
+        
 
         # Loop through the list of transport
         bus = ("bus", "BUS")
@@ -382,8 +405,7 @@ def ExecuteCode(spans):
             "Ambès": Ambès_count
         }
         for city_name, count in city_counts.items():
-            print(f"nombre de mention de {city_name}: {count}")
-            label.textbox.insert("0.0", city_name + " : " + str(count) + "\n") # Display the results in the GUI
+            label.textbox1.insert("0.0", city_name + " : " + str(count) + "\n") # Display the results in the GUI
 
 
     # Load the map of the cities from the JSON file
@@ -444,14 +466,16 @@ def ExecuteCode(spans):
             elif city >= 6:
                 feature['properties']['fill'] = "#FF0000"
 
-            # save the map into a geojson file
+        # save the map into a geojson file
         maplocation = os.getcwd()
         maplocation = os.path.join(maplocation, "Web_Scraping\\result", "map.json")
         with open(maplocation, 'w+') as f:
             json.dump(cities_data, f, indent=2)
 
-        webbrowser.open("https://geojson.io/#map=5.28/46.563/2.071") # Open the map in the browser
 
+        with open(datalocation, "r", encoding="utf-8") as json_str:
+            for line in json_str:
+                label.textbox2.insert("0.0", line + "\n") # Display the results in the GUI
 
 
 
@@ -473,7 +497,7 @@ root = customtkinter.CTk()
 root.title("OnePoint - Scraping")
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("blue")
-root.geometry('880x500')
+root.geometry('880x730')
 root.resizable(False, False)
 
 
@@ -591,11 +615,14 @@ Button.pack(side = "bottom")
 
 ###################################################################################
 ###################################################################################
-# Tabview to show the result
+# Tabview to show the result 
 ###################################################################################
 ###################################################################################
-label.textbox = customtkinter.CTkTextbox(root,)
-label.textbox.grid(row=1, column=0, columnspan=3, padx=(20, 0), pady=(20, 0), sticky="nsew")
+label.textbox1 = customtkinter.CTkTextbox(root)
+label.textbox1.grid(row=1, column=0, columnspan=3, padx=(20, 0), pady=(20, 0), sticky="nsew")
+
+label.textbox2 = customtkinter.CTkTextbox(root)
+label.textbox2.grid(row=2, column=0, columnspan=3, padx=(20, 0), pady=(20, 0), sticky="nsew")
 
 
 root.mainloop()
