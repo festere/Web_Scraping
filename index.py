@@ -85,6 +85,7 @@ def ALL_StartCode():
                 # Parse only the content we want
                 spans = soup.find_all(Balise, Class_)
                 ExecuteCode(spans)
+                ExecuteCode2()
             except:
                 showwarning("Connection au site impossible")
 
@@ -213,11 +214,12 @@ def PERSONALIZED_StartCodeClasse():
 ##########################################################################################################################################################################
 # DEF of parsing
 ##########################################################################################################################################################################
+datalocation = os.getcwd()
+datalocation = os.path.join(datalocation, "Web_Scraping\\result", "data.json")
+
 def ExecuteCode(spans):
     # Export to a JSON file
-    datalocation = os.getcwd()
-    datalocation = os.path.join(datalocation, "Web_Scraping\\result", "data.json")
-    with open(datalocation, 'w+', encoding='utf-8') as f:
+    with open(datalocation, 'a', encoding='utf-8') as f:
         count = 0 # Count for the ID
         for span in spans:
             spans_text = [span.get_text()]
@@ -226,7 +228,10 @@ def ExecuteCode(spans):
             json.dump(element, f, ensure_ascii=False)
             f.write('\n')
             count += 1
+        f.close()
 
+
+def ExecuteCode2():
     # Import the JSON
     with open(datalocation) as file:
         content = file.read()
@@ -381,6 +386,7 @@ def ExecuteCode(spans):
                 Merignac_count += 1
             elif word in Ambès: #33 810
                 Ambès_count += 1
+
 
         # Create a dictionary with the counts
         city_counts = {
