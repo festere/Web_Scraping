@@ -75,11 +75,11 @@ def ALL_StartCode():
         request = http.request('GET', URL, timeout=10.0)
         http_status = request.status
         print(http_status)
-        if http_status == 400:
-            showwarning("Connection au site impossible")
+        if http_status == 404:
+            showwarning("Connection à "+ website + " impossible")
         else:
-            # Parse the HTML content of the page
             try:
+                # Parse the HTML content of the page
                 response = requests.get(URL, timeout=10.0)
                 soup = BeautifulSoup(response.content, 'html.parser')
                 # Parse only the content we want
@@ -87,7 +87,7 @@ def ALL_StartCode():
                 ExecuteCode(spans)
                 ExecuteCode2()
             except:
-                showwarning("Connection au site impossible")
+                showwarning("Connection à "+ website + " impossible")
 
 
 
@@ -107,7 +107,7 @@ def ONE_StartCode(selected_website):
     request = http.request('GET', URL, timeout=10.0)
     http_status = request.status
     print(http_status)
-    if http_status == 400:
+    if http_status == 404:
         showwarning("Connection au site impossible")
     else:
         # Parse the HTML content of the page
@@ -136,7 +136,7 @@ def PERSONALIZED_StartCodeURL():
     request = http.request('GET', url_value_URL.get(), timeout=10.0)
     http_status = request.status
     print(http_status)
-    if http_status == 400:
+    if http_status == 404:
         showwarning("Connection au site impossible")
     elif url_value_URL.get() == "":
         showwarning("Attention", "Veuillez entrer une URL")
@@ -156,7 +156,7 @@ def PERSONALIZED_StartCodeBalise():
     request = http.request('GET', url_value_Balise.get(), timeout=10.0)
     http_status = request.status
     print(http_status)
-    if http_status == 400:
+    if http_status == 404:
         showwarning("Connection au site impossible")
     elif url_value_Balise.get() == "":
         showwarning("Attention", "Veuillez entrer une URL")
@@ -178,7 +178,7 @@ def PERSONALIZED_StartCodeClasse():
     request = http.request('GET', url_value_Classe.get(), timeout=10.0)
     http_status = request.status
     print(http_status)
-    if http_status == 400:
+    if http_status == 404:
         showwarning("Connection au site impossible")
     elif url_value_Classe.get() == "":
         showwarning("Attention", "Veuillez entrer une URL")
