@@ -12,8 +12,9 @@ from tkinter.messagebox import *
 import customtkinter
 import os
 import random
-import urllib3
-urllib3.disable_warnings()
+
+
+
 
 
 websites = {
@@ -27,15 +28,15 @@ websites = {
     "Balise": "div",
     "Class": "cmtx_comment_text"
   },
-  "Pages Jaunes": {
-    "URL": "https://www.pagesjaunes.fr/pros/59035126",
-    "Balise": "div",
-    "Class": "commentaire"
-  },
   "TripAdvisor": {
     "URL": "https://www.tripadvisor.fr/Attraction_Review-g187079-d10344773-Reviews-Le_reseau_de_transports_TBM_Tramway-Bordeaux_Gironde_Nouvelle_Aquitaine.html",
     "Balise": "span",
     "Class": "yCeTE"
+  },
+  "Pages Jaunes": {
+    "URL": "https://www.pagesjaunes.fr/pros/59035126",
+    "Balise": "div",
+    "Class": "commentaire"
   }
 }
 
@@ -48,23 +49,10 @@ user_agent_list = [
 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36',
 ]
 
+
 user_agent = random.choice(user_agent_list)
-
-HEADERS = {
-        "User-Agent": user_agent,
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-        "Accept-Language": "en-US,en;q=0.5",
-        "Accept-Encoding": "gzip, deflate",
-        "Connection": "keep-alive",
-        "Upgrade-Insecure-Requests": "1",
-        "Sec-Fetch-Dest": "document",
-        "Sec-Fetch-Mode": "navigate",
-        "Sec-Fetch-Site": "none",
-        "Sec-Fetch-User": "?1",
-        "Cache-Control": "max-age=0",
-}
-
-print(HEADERS)
+headers = {'User-Agent': user_agent}
+print(headers)
 
 def check_checkbox():
     if checkbox.get() == 0: # If the checkbox is not checked
@@ -92,13 +80,13 @@ def ALL_StartCode():
         else:
             # Parse the HTML content of the page
             try:
-                response = requests.get(URL, timeout=10.0, headers=HEADERS)
+                response = requests.get(URL, timeout=10.0)
                 soup = BeautifulSoup(response.content, 'html.parser')
                 # Parse only the content we want
                 spans = soup.find_all(Balise, Class_)
+                ExecuteCode(spans)
             except:
                 showwarning("Connection au site impossible")
-        ExecuteCode(spans)
 
 
 
@@ -122,14 +110,12 @@ def ONE_StartCode(selected_website):
         showwarning("Connection au site impossible")
     else:
         # Parse the HTML content of the page
-        try:
-            response = requests.get(URL, timeout=10.0, verify=False, headers=HEADERS)
-            soup = BeautifulSoup(response.content, 'html.parser')
-            # Parse only the content we want
-            spans = soup.find_all(Balise, Class_)
-        except:
-            showwarning("Connection au site impossible")
-    ExecuteCode(spans)
+        response = requests.get(URL, timeout=10.0, headers=headers, verify=False)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        # Parse only the content we want
+        spans = soup.find_all(Balise, Class_)
+        ExecuteCode(spans)
+        showwarning("Connection au site impossible")
 
 
 
@@ -156,17 +142,17 @@ def PERSONALIZED_StartCodeURL():
     else:
         # Parse the HTML content of the page
         try:
-            response = requests.get(url_value_URL.get(), timeout=10.0, headers=HEADERS)
+            response = requests.get(url_value_URL.get(), timeout=10.0)
             soup = BeautifulSoup(response.content, 'html.parser')
             # Parse only the content we want
             spans = soup
+            ExecuteCode(spans)
         except:
             showwarning("Connection au site impossible")
-    ExecuteCode(spans)
 
 def PERSONALIZED_StartCodeBalise():
     http = urllib3.PoolManager()
-    request = http.request('GET', url_value_Balise.get(), timeout=10.0, headers=HEADERS)
+    request = http.request('GET', url_value_Balise.get(), timeout=10.0)
     http_status = request.status
     print(http_status)
     if http_status == 400:
@@ -178,13 +164,13 @@ def PERSONALIZED_StartCodeBalise():
     else:
         # Parse the HTML content of the page
         try:
-            response = requests.get(url_value_Balise.get(), timeout=10.0, headers=HEADERS)
+            response = requests.get(url_value_Balise.get(), timeout=10.0)
             soup = BeautifulSoup(response.content, 'html.parser')
             # Parse only the content we want
             spans = soup.find_all(balise_value_Balise.get(), timeout=10.0)
+            ExecuteCode(spans)
         except:
             showwarning("Connection au site impossible")
-        ExecuteCode(spans)
 
 def PERSONALIZED_StartCodeClasse():
     http = urllib3.PoolManager()
@@ -202,13 +188,13 @@ def PERSONALIZED_StartCodeClasse():
     else:
         # Parse the HTML content of the page
         try:
-            response = requests.get(url_value_Classe.get(), timeout=10.0, headers=HEADERS)
+            response = requests.get(url_value_Classe.get(), timeout=10.0)
             soup = BeautifulSoup(response.content, 'html.parser')
             # Parse only the content we want
             spans = soup.find_all(balise_value_Classe.get(), {'class': class_value_Classe.get()}, timeout=10.0)
+            ExecuteCode(spans)
         except:
             showwarning("Connection au site impossible")
-    ExecuteCode(spans)
 
 
 
@@ -231,7 +217,7 @@ def ExecuteCode(spans):
     # Export to a JSON file
     datalocation = os.getcwd()
     datalocation = os.path.join(datalocation, "Web_Scraping\\result", "data.json")
-    with open(datalocation, 'a', encoding='utf-8') as f:
+    with open(datalocation, 'w+', encoding='utf-8') as f:
         count = 0 # Count for the ID
         for span in spans:
             spans_text = [span.get_text()]
