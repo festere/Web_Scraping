@@ -68,13 +68,13 @@ def check_checkbox():
 ##########################################################################################################################################################################
 def ALL_StartCode():
     count = 1
-    spans = ""
+    spansList = []
     for website in websites:
         EnumerateWebsite = len(websites)
         print(EnumerateWebsite)
         print(count)
         if count == EnumerateWebsite:
-            ExecuteCode(spans)
+            PrintCode()
         else:
             try: 
                 URL = websites[website]["URL"]
@@ -91,10 +91,8 @@ def ALL_StartCode():
                 soup = BeautifulSoup(response.content, 'html.parser')
 
                 # Parse only the content we want
-                SpansSingle = soup.find_all(Balise, Class_)
-                spans += SpansSingle
-                print(spans)
-                print(SpansSingle)
+                spans = soup.find_all(Balise, Class_)
+                ExecuteCode(spans)
                 count += 1
             except:
                 showwarning(title="Attention", message="Connection à "+ website + " impossible")
@@ -133,7 +131,7 @@ def ONE_StartCode(selected_website):
             # Parse only the content we want
             spans = soup.find_all(Balise, Class_)
             ExecuteCode(spans)
-            showinfo(title="Attention", message="Scraping terminé")
+            PrintCode()
         except:
             showwarning(title="Attention", message="Connection à "+ selected_website + " impossible")
 
@@ -165,7 +163,7 @@ def PERSONALIZED_StartCodeURL():
         response = requests.get(url_value_URL.get(), timeout=5.0)
         soup = BeautifulSoup(response.content, 'html.parser')
         ExecuteCode(soup)
-        showinfo(title="Attention", message="Scraping terminé")
+        PrintCode()
 
 def PERSONALIZED_StartCodeBalise():
     try:
@@ -184,7 +182,7 @@ def PERSONALIZED_StartCodeBalise():
         # Parse only the content we want
         spans = soup.find_all(balise_value_Balise.get(), timeout=5.0)
         ExecuteCode(spans)
-        showinfo(title="Attention", message="Scraping terminé")
+        PrintCode()
 
 def PERSONALIZED_StartCodeClasse():
     try:
@@ -203,7 +201,7 @@ def PERSONALIZED_StartCodeClasse():
         # Parse only the content we want
         spans = soup.find_all(balise_value_Classe.get(), {'class': class_value_Classe.get()}, timeout=5.0)
         ExecuteCode(spans)
-        showinfo(title="Attention", message="Scraping terminé")
+        PrintCode()
 
 
 
@@ -238,6 +236,7 @@ def ExecuteCode(spans):
             count += 1
         f.close()
 
+def PrintCode():
     # Import the JSON
     with open(datalocation) as file:
         content = file.read()
@@ -493,6 +492,7 @@ def ExecuteCode(spans):
             for line in json_str:
                 label.textbox2.insert("0.0", line + "\n") # Display the results in the GUI
 
+    showinfo(title="Attention", message="Scraping terminé")
 
 
 
