@@ -12,6 +12,8 @@ from tkinter.messagebox import *
 import customtkinter
 import os
 import random
+import urllib3
+urllib3.disable_warnings()
 
 
 
@@ -85,7 +87,6 @@ def ALL_StartCode():
                 # Parse only the content we want
                 spans = soup.find_all(Balise, Class_)
                 ExecuteCode(spans)
-                ExecuteCode2()
             except:
                 showwarning("Connection à "+ website + " impossible")
 
@@ -229,6 +230,7 @@ def ExecuteCode(spans):
             f.write('\n')
             count += 1
         f.close()
+    ExecuteCode2()
 
 
 def ExecuteCode2():
