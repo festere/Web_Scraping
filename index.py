@@ -12,6 +12,7 @@ from tkinter.messagebox import *
 import customtkinter
 import os
 import random
+import cloudscraper
 import urllib3
 urllib3.disable_warnings()
 
@@ -42,24 +43,13 @@ websites = {
 }
 
 
-user_agent_list = [
-'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15',
-'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0',
-'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36',
-'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:77.0) Gecko/20100101 Firefox/77.0',
-'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36',
-]
-
-
-user_agent = random.choice(user_agent_list)
-headers = {'User-Agent': user_agent}
-print(headers)
-
 def check_checkbox():
     if checkbox.get() == 0: # If the checkbox is not checked
         ONE_StartCode(optionmenu.get())
     else: # If the checkbox is checked
         ALL_StartCode()
+
+
 
 ##########################################################################################################################################################################
 ##########################################################################################################################################################################
@@ -87,8 +77,9 @@ def ALL_StartCode():
                 print(http_status)
                     
                 # Parse the HTML content of the page
-                response = requests.get(URL, timeout=5.0)
-                soup = BeautifulSoup(response.content, 'html.parser')
+                scraper = cloudscraper.create_scraper()
+                response = scraper.get(URL).text
+                soup = BeautifulSoup(response, 'html.parser')
 
                 # Parse only the content we want
                 spans = soup.find_all(Balise, Class_)
@@ -126,8 +117,9 @@ def ONE_StartCode(selected_website):
     else:
         try:
             # Parse the HTML content of the page
-            response = requests.get(URL, timeout=5.0, headers=headers, verify=False)
-            soup = BeautifulSoup(response.content, 'html.parser')
+            scraper = cloudscraper.create_scraper()
+            response = scraper.get(URL).text
+            soup = BeautifulSoup(response, 'html.parser')
             # Parse only the content we want
             spans = soup.find_all(Balise, Class_)
             ExecuteCode(spans)
@@ -160,8 +152,10 @@ def PERSONALIZED_StartCodeURL():
         showwarning(title="Attention", message="Connection au site impossible")
     else:
         # Parse the HTML content of the page
-        response = requests.get(url_value_URL.get(), timeout=5.0)
-        soup = BeautifulSoup(response.content, 'html.parser')
+        scraper = cloudscraper.create_scraper()
+        response = scraper.get(url_value_URL.get()).text
+
+        soup = BeautifulSoup(response, 'html.parser')
         ExecuteCode(soup)
         PrintCode()
 
@@ -177,8 +171,10 @@ def PERSONALIZED_StartCodeBalise():
         showwarning(title="Attention", message="Connection au site impossible")
     else:
         # Parse the HTML content of the page
-        response = requests.get(url_value_Balise.get(), timeout=5.0)
-        soup = BeautifulSoup(response.content, 'html.parser')
+        scraper = cloudscraper.create_scraper()
+        response = scraper.get(url_value_Balise.get()).text
+
+        soup = BeautifulSoup(response, 'html.parser')
         # Parse only the content we want
         spans = soup.find_all(balise_value_Balise.get(), timeout=5.0)
         ExecuteCode(spans)
@@ -196,8 +192,10 @@ def PERSONALIZED_StartCodeClasse():
         showwarning(title="Attention", message="Connection au site impossible")
     else:
         # Parse the HTML content of the page
-        response = requests.get(url_value_Classe.get(), timeout=5.0)
-        soup = BeautifulSoup(response.content, 'html.parser')
+        scraper = cloudscraper.create_scraper()
+        response = scraper.get(url_value_Classe.get()).text
+        
+        soup = BeautifulSoup(response, 'html.parser')
         # Parse only the content we want
         spans = soup.find_all(balise_value_Classe.get(), {'class': class_value_Classe.get()}, timeout=5.0)
         ExecuteCode(spans)
