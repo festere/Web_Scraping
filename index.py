@@ -18,7 +18,6 @@ urllib3.disable_warnings()
 
 
 
-
 websites = {
   "Petit Fute": {
     "URL": "https://www.petitfute.com/v1524-bordeaux-33000/c1122-voyage-transports/c1145-avion-bateau-bus-train-taxi-parking/c1154-transport-urbain/98794-tbm.html",
@@ -68,27 +67,40 @@ def check_checkbox():
 ##########################################################################################################################################################################
 ##########################################################################################################################################################################
 def ALL_StartCode():
+    count = 1
+    spans = ""
     for website in websites:
-        URL = websites[website]["URL"]
-        Balise = websites[website]["Balise"]
-        Class_ = websites[website]["Class"]
-        try:
-            http = urllib3.PoolManager()
-            request = http.request('GET', URL, timeout=10.0)
-            http_status = request.status
-            print(http_status)
-        except:
-            showwarning(title="Attention", message="Connection à "+ website + " impossible")
-        if http_status == 404:
-            showwarning(title="Attention", message="Connection à "+ website + " impossible")
-        else:
-            # Parse the HTML content of the page
-            response = requests.get(URL, timeout=10.0)
-            soup = BeautifulSoup(response.content, 'html.parser')
-            # Parse only the content we want
-            spans = soup.find_all(Balise, Class_)
+        EnumerateWebsite = len(websites)
+        print(EnumerateWebsite)
+        print(count)
+        if count == EnumerateWebsite:
             ExecuteCode(spans)
-    showinfo(title="Attention", message="Scraping terminé")
+        else:
+            try: 
+                URL = websites[website]["URL"]
+                Balise = websites[website]["Balise"]
+                Class_ = websites[website]["Class"]
+
+                http = urllib3.PoolManager()
+                request = http.request('GET', URL, timeout=5.0)
+                http_status = request.status
+                print(http_status)
+                    
+                # Parse the HTML content of the page
+                response = requests.get(URL, timeout=5.0)
+                soup = BeautifulSoup(response.content, 'html.parser')
+
+                # Parse only the content we want
+                SpansSingle = soup.find_all(Balise, Class_)
+                spans += SpansSingle
+                print(spans)
+                print(SpansSingle)
+                count += 1
+            except:
+                showwarning(title="Attention", message="Connection à "+ website + " impossible")
+                count += 1
+                continue
+
 
 
 
@@ -106,7 +118,7 @@ def ONE_StartCode(selected_website):
 
     try:
         http = urllib3.PoolManager()
-        request = http.request('GET', URL, timeout=10.0)
+        request = http.request('GET', URL, timeout=5.0)
         http_status = request.status
         print(http_status)
     except:
@@ -116,11 +128,12 @@ def ONE_StartCode(selected_website):
     else:
         try:
             # Parse the HTML content of the page
-            response = requests.get(URL, timeout=10.0, headers=headers, verify=False)
+            response = requests.get(URL, timeout=5.0, headers=headers, verify=False)
             soup = BeautifulSoup(response.content, 'html.parser')
             # Parse only the content we want
             spans = soup.find_all(Balise, Class_)
             ExecuteCode(spans)
+            showinfo(title="Attention", message="Scraping terminé")
         except:
             showwarning(title="Attention", message="Connection à "+ selected_website + " impossible")
 
@@ -140,7 +153,7 @@ def ONE_StartCode(selected_website):
 def PERSONALIZED_StartCodeURL():
     try:
         http = urllib3.PoolManager()
-        request = http.request('GET', url_value_URL.get(), timeout=10.0)
+        request = http.request('GET', url_value_URL.get(), timeout=5.0)
         http_status = request.status
         print(http_status)
     except:
@@ -149,14 +162,15 @@ def PERSONALIZED_StartCodeURL():
         showwarning(title="Attention", message="Connection au site impossible")
     else:
         # Parse the HTML content of the page
-        response = requests.get(url_value_URL.get(), timeout=10.0)
+        response = requests.get(url_value_URL.get(), timeout=5.0)
         soup = BeautifulSoup(response.content, 'html.parser')
         ExecuteCode(soup)
+        showinfo(title="Attention", message="Scraping terminé")
 
 def PERSONALIZED_StartCodeBalise():
     try:
         http = urllib3.PoolManager()
-        request = http.request('GET', url_value_Balise.get(), timeout=10.0)
+        request = http.request('GET', url_value_Balise.get(), timeout=5.0)
         http_status = request.status
         print(http_status)
     except:
@@ -165,16 +179,17 @@ def PERSONALIZED_StartCodeBalise():
         showwarning(title="Attention", message="Connection au site impossible")
     else:
         # Parse the HTML content of the page
-        response = requests.get(url_value_Balise.get(), timeout=10.0)
+        response = requests.get(url_value_Balise.get(), timeout=5.0)
         soup = BeautifulSoup(response.content, 'html.parser')
         # Parse only the content we want
-        spans = soup.find_all(balise_value_Balise.get(), timeout=10.0)
+        spans = soup.find_all(balise_value_Balise.get(), timeout=5.0)
         ExecuteCode(spans)
+        showinfo(title="Attention", message="Scraping terminé")
 
 def PERSONALIZED_StartCodeClasse():
     try:
         http = urllib3.PoolManager()
-        request = http.request('GET', url_value_Classe.get(), timeout=10.0)
+        request = http.request('GET', url_value_Classe.get(), timeout=5.0)
         http_status = request.status
         print(http_status)
     except:
@@ -183,11 +198,12 @@ def PERSONALIZED_StartCodeClasse():
         showwarning(title="Attention", message="Connection au site impossible")
     else:
         # Parse the HTML content of the page
-        response = requests.get(url_value_Classe.get(), timeout=10.0)
+        response = requests.get(url_value_Classe.get(), timeout=5.0)
         soup = BeautifulSoup(response.content, 'html.parser')
         # Parse only the content we want
-        spans = soup.find_all(balise_value_Classe.get(), {'class': class_value_Classe.get()}, timeout=10.0)
+        spans = soup.find_all(balise_value_Classe.get(), {'class': class_value_Classe.get()}, timeout=5.0)
         ExecuteCode(spans)
+        showinfo(title="Attention", message="Scraping terminé")
 
 
 
