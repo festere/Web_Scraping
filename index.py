@@ -72,23 +72,22 @@ def ALL_StartCode():
         URL = websites[website]["URL"]
         Balise = websites[website]["Balise"]
         Class_ = websites[website]["Class"]
-
-        http = urllib3.PoolManager()
-        request = http.request('GET', URL, timeout=10.0)
-        http_status = request.status
-        print(http_status)
+        try:
+            http = urllib3.PoolManager()
+            request = http.request('GET', URL, timeout=10.0)
+            http_status = request.status
+            print(http_status)
+        except:
+            showwarning("Connection à "+ website + " impossible")
         if http_status == 404:
             showwarning("Connection à "+ website + " impossible")
         else:
-            try:
-                # Parse the HTML content of the page
-                response = requests.get(URL, timeout=10.0)
-                soup = BeautifulSoup(response.content, 'html.parser')
-                # Parse only the content we want
-                spans = soup.find_all(Balise, Class_)
-                ExecuteCode(spans)
-            except:
-                showwarning("Connection à "+ website + " impossible")
+            # Parse the HTML content of the page
+            response = requests.get(URL, timeout=10.0)
+            soup = BeautifulSoup(response.content, 'html.parser')
+            # Parse only the content we want
+            spans = soup.find_all(Balise, Class_)
+            ExecuteCode(spans)
 
 
 
@@ -104,20 +103,25 @@ def ONE_StartCode(selected_website):
     Balise = websites[selected_website]["Balise"]
     Class_ = websites[selected_website]["Class"]
 
-    http = urllib3.PoolManager()
-    request = http.request('GET', URL, timeout=10.0)
-    http_status = request.status
-    print(http_status)
+    try:
+        http = urllib3.PoolManager()
+        request = http.request('GET', URL, timeout=10.0)
+        http_status = request.status
+        print(http_status)
+    except:
+        showwarning("Connection à "+ selected_website + " impossible")
     if http_status == 404:
-        showwarning("Connection au site impossible")
+        showwarning("Connection à "+ selected_website + " impossible")
     else:
-        # Parse the HTML content of the page
-        response = requests.get(URL, timeout=10.0, headers=headers, verify=False)
-        soup = BeautifulSoup(response.content, 'html.parser')
-        # Parse only the content we want
-        spans = soup.find_all(Balise, Class_)
-        ExecuteCode(spans)
-        showwarning("Connection au site impossible")
+        try:
+            # Parse the HTML content of the page
+            response = requests.get(URL, timeout=10.0, headers=headers, verify=False)
+            soup = BeautifulSoup(response.content, 'html.parser')
+            # Parse only the content we want
+            spans = soup.find_all(Balise, Class_)
+            ExecuteCode(spans)
+        except:
+            showwarning("Connection à "+ selected_website + " impossible")
 
 
 
@@ -138,19 +142,16 @@ def PERSONALIZED_StartCodeURL():
     http_status = request.status
     print(http_status)
     if http_status == 404:
-        showwarning("Connection au site impossible")
+        showwarning("1Connection au site impossible")
     elif url_value_URL.get() == "":
         showwarning("Attention", "Veuillez entrer une URL")
     else:
         # Parse the HTML content of the page
-        try:
-            response = requests.get(url_value_URL.get(), timeout=10.0)
-            soup = BeautifulSoup(response.content, 'html.parser')
-            # Parse only the content we want
-            spans = soup
-            ExecuteCode(spans)
-        except:
-            showwarning("Connection au site impossible")
+        response = requests.get(url_value_URL.get(), timeout=10.0)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        # Parse only the content we want
+        spans = soup
+        ExecuteCode(spans)
 
 def PERSONALIZED_StartCodeBalise():
     http = urllib3.PoolManager()
@@ -165,14 +166,11 @@ def PERSONALIZED_StartCodeBalise():
         showwarning("Attention", "Veuillez entrer une balise")
     else:
         # Parse the HTML content of the page
-        try:
-            response = requests.get(url_value_Balise.get(), timeout=10.0)
-            soup = BeautifulSoup(response.content, 'html.parser')
-            # Parse only the content we want
-            spans = soup.find_all(balise_value_Balise.get(), timeout=10.0)
-            ExecuteCode(spans)
-        except:
-            showwarning("Connection au site impossible")
+        response = requests.get(url_value_Balise.get(), timeout=10.0)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        # Parse only the content we want
+        spans = soup.find_all(balise_value_Balise.get(), timeout=10.0)
+        ExecuteCode(spans)
 
 def PERSONALIZED_StartCodeClasse():
     http = urllib3.PoolManager()
@@ -189,14 +187,11 @@ def PERSONALIZED_StartCodeClasse():
         showwarning("Attention", "Veuillez entrer une classe")
     else:
         # Parse the HTML content of the page
-        try:
-            response = requests.get(url_value_Classe.get(), timeout=10.0)
-            soup = BeautifulSoup(response.content, 'html.parser')
-            # Parse only the content we want
-            spans = soup.find_all(balise_value_Classe.get(), {'class': class_value_Classe.get()}, timeout=10.0)
-            ExecuteCode(spans)
-        except:
-            showwarning("Connection au site impossible")
+        response = requests.get(url_value_Classe.get(), timeout=10.0)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        # Parse only the content we want
+        spans = soup.find_all(balise_value_Classe.get(), {'class': class_value_Classe.get()}, timeout=10.0)
+        ExecuteCode(spans)
 
 
 
@@ -230,10 +225,7 @@ def ExecuteCode(spans):
             f.write('\n')
             count += 1
         f.close()
-    ExecuteCode2()
 
-
-def ExecuteCode2():
     # Import the JSON
     with open(datalocation) as file:
         content = file.read()
@@ -533,7 +525,7 @@ optionmenu = customtkinter.CTkOptionMenu(root.tabview, values=website_names)
 optionmenu.pack()
 
 # Checkbox to select if the user wants to scrap all the pages
-checkbox = customtkinter.CTkCheckBox(root.tabview, text="Tout les sites")
+checkbox = customtkinter.CTkCheckBox(root.tabview, text="Tous les sites")
 checkbox.pack(pady=(60, 0))
 
 #Button to take start ONE_StartCode with the website selected
