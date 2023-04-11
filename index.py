@@ -78,9 +78,9 @@ def ALL_StartCode():
             http_status = request.status
             print(http_status)
         except:
-            showwarning(title=None, message="Connection à "+ website + " impossible")
+            showwarning(title="Attention", message="Connection à "+ website + " impossible")
         if http_status == 404:
-            showwarning(title=None, message="Connection à "+ website + " impossible")
+            showwarning(title="Attention", message="Connection à "+ website + " impossible")
         else:
             # Parse the HTML content of the page
             response = requests.get(URL, timeout=10.0)
@@ -88,7 +88,7 @@ def ALL_StartCode():
             # Parse only the content we want
             spans = soup.find_all(Balise, Class_)
             ExecuteCode(spans)
-    showinfo(title=None, message="Scraping terminé")
+    showinfo(title="Attention", message="Scraping terminé")
 
 
 
@@ -110,9 +110,9 @@ def ONE_StartCode(selected_website):
         http_status = request.status
         print(http_status)
     except:
-        showwarning(title=None, message="Connection à "+ selected_website + " impossible")
+        showwarning(title="Attention", message="Connection à "+ selected_website + " impossible")
     if http_status == 404:
-        showwarning(title=None, message="Connection à "+ selected_website + " impossible")
+        showwarning(title="Attention", message="Connection à "+ selected_website + " impossible")
     else:
         try:
             # Parse the HTML content of the page
@@ -122,7 +122,7 @@ def ONE_StartCode(selected_website):
             spans = soup.find_all(Balise, Class_)
             ExecuteCode(spans)
         except:
-            showwarning(title=None, message="Connection à "+ selected_website + " impossible")
+            showwarning(title="Attention", message="Connection à "+ selected_website + " impossible")
 
 
 
@@ -138,33 +138,31 @@ def ONE_StartCode(selected_website):
 # DEF to check if every input as been filled
 ##########################################################################################################################################################################
 def PERSONALIZED_StartCodeURL():
-    http = urllib3.PoolManager()
-    request = http.request('GET', url_value_URL.get(), timeout=10.0)
-    http_status = request.status
-    print(http_status)
+    try:
+        http = urllib3.PoolManager()
+        request = http.request('GET', url_value_URL.get(), timeout=10.0)
+        http_status = request.status
+        print(http_status)
+    except:
+        showwarning(title="Attention", message="Connection au site impossible")
     if http_status == 404:
-        showwarning(title=None, message="Connection au site impossible")
-    elif url_value_URL.get() == "":
-        showwarning(title=None, message="Veuillez entrer une URL")
+        showwarning(title="Attention", message="Connection au site impossible")
     else:
         # Parse the HTML content of the page
         response = requests.get(url_value_URL.get(), timeout=10.0)
         soup = BeautifulSoup(response.content, 'html.parser')
-        # Parse only the content we want
-        spans = soup
-        ExecuteCode(spans)
+        ExecuteCode(soup)
 
 def PERSONALIZED_StartCodeBalise():
-    http = urllib3.PoolManager()
-    request = http.request('GET', url_value_Balise.get(), timeout=10.0)
-    http_status = request.status
-    print(http_status)
+    try:
+        http = urllib3.PoolManager()
+        request = http.request('GET', url_value_Balise.get(), timeout=10.0)
+        http_status = request.status
+        print(http_status)
+    except:
+        showwarning(title="Attention", message="Connection au site impossible")
     if http_status == 404:
-        showwarning(title=None, message="Connection au site impossible")
-    elif url_value_Balise.get() == "":
-        showwarning(title=None, message="Veuillez entrer une URL")
-    elif balise_value_Balise.get() == "":
-        showwarning(title=None, message="Veuillez entrer une balise")
+        showwarning(title="Attention", message="Connection au site impossible")
     else:
         # Parse the HTML content of the page
         response = requests.get(url_value_Balise.get(), timeout=10.0)
@@ -174,18 +172,15 @@ def PERSONALIZED_StartCodeBalise():
         ExecuteCode(spans)
 
 def PERSONALIZED_StartCodeClasse():
-    http = urllib3.PoolManager()
-    request = http.request('GET', url_value_Classe.get(), timeout=10.0)
-    http_status = request.status
-    print(http_status)
+    try:
+        http = urllib3.PoolManager()
+        request = http.request('GET', url_value_Classe.get(), timeout=10.0)
+        http_status = request.status
+        print(http_status)
+    except:
+        showwarning(title="Attention", message="Connection au site impossible")
     if http_status == 404:
-        showwarning(title=None, message="Connection au site impossible")
-    elif url_value_Classe.get() == "":
-        showwarning(title=None, message="Veuillez entrer une URL")
-    elif balise_value_Classe.get() == "":
-        showwarning(title=None, message="Veuillez entrer une balise")
-    elif class_value_Classe.get() == "":
-        showwarning(title=None, message="Veuillez entrer une classe")
+        showwarning(title="Attention", message="Connection au site impossible")
     else:
         # Parse the HTML content of the page
         response = requests.get(url_value_Classe.get(), timeout=10.0)
