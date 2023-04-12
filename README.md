@@ -33,7 +33,7 @@ Exportation des données suivantes:
 <br>
 
 ### 2.2 Linux
-1. Installer la derniere version de [Python 3](https://docs.python-guide.org/starting/install3/linux[
+1. Installer la derniere version de [Python 3](https://docs.python-guide.org/starting/install3/linux)
 2. Installer la derniere version de pip avec `apt install python3-pip`
 3. Installer git avec la commande `sudo apt install git`.
 4. Installer l'outil avec la commande `git clone https://github.com/festere/Web_Scraping.git`.
