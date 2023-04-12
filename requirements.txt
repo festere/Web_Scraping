@@ -3,5 +3,4 @@ geopandas
 customtkinter
 beautifulsoup4
 Unidecode
-tkinter
 cloudscraper
