@@ -27,8 +27,8 @@ Exportation des données suivantes:
 5. Verifier que le fichier s'appelle bien `Web_Scraping` et non `Web_Scraping-main`.
 6. Ouvrir le dossier `Web_Scraping`.
 7. Faire un clic droit dans le dossier et cliquer sur "Ouvrir un terminal ici".
-8. taper la commande `pip install -r requirements.txt` et appuyer sur entrée.
-9. taper la commande `python3 index.py` et appuyer sur entrée.
+8. Taper la commande `pip install -r requirements.txt` et appuyer sur entrée.
+9. Taper la commande `python3 index.py` et appuyer sur entrée.
 
 <br>
 
@@ -37,4 +37,5 @@ Exportation des données suivantes:
 2. Installer git avec la commande `sudo apt install git`.
 3. Installer l'outil avec la commande `git clone https://github.com/festere/Web_Scraping.git`.
 4. Ouverture du dossier avec la commande `cd Web_Scraping`.
-5. Exécution du programme avec la commande `python3 index.py`.
+5. Taper la commande `pip install -r requirements.txt` et appuyer sur entrée.
+6. Exécution du programme avec la commande `python3 index.py`.
