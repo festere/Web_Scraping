@@ -23,10 +23,9 @@ Exportation des données suivantes:
 1. Installer la derniere version de [Python 3](https://www.python.org/downloads/).
 2. Installer l'outil de [Web_Scraping](https://github.com/festere/Web_Scraping/archive/refs/heads/main.zip).
 3. Dezipper le dossier.
-4. Sortir le dernier dossier `Web_Scraping` si il y en a plusieurs.
-5. Verifier que le fichier s'appelle bien `Web_Scraping` et non `Web_Scraping-main`.
+5. Verifier que le dernier fichier s'appelle bien `Web_Scraping` et non `Web_Scraping-main`.
 6. Ouvrir le dossier `Web_Scraping`.
-7. Faire un clic droit dans le dossier et cliquer sur "Ouvrir un terminal ici".
+7. Faire un clic droit dans le dossier et cliquer sur "Ouvrir dans le terminal".
 8. Taper la commande `pip install -r requirements.txt` et appuyer sur entrée.
 9. Taper la commande `python3 index.py` et appuyer sur entrée.
 
