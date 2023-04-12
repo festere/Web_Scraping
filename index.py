@@ -219,7 +219,7 @@ def PERSONALIZED_StartCodeClasse():
 # DEF of parsing
 ##########################################################################################################################################################################
 datalocation = os.getcwd()
-datalocation = os.path.join(datalocation, "Web_Scraping-main\\result", "data.json")
+datalocation = os.path.join(datalocation, "Web_Scraping\\result", "data.json")
 
 def ExecuteCode(spans):
     # Export to a JSON file
@@ -423,7 +423,7 @@ def PrintCode():
 
     # Load the map of the cities from the JSON file
     bordeauxlocation = os.getcwd()
-    bordeauxlocation = os.path.join(bordeauxlocation, "Web_Scraping-main\\bin", "bordeaux.json")
+    bordeauxlocation = os.path.join(bordeauxlocation, "Web_Scraping\\bin", "bordeaux.json")
     with open(bordeauxlocation, "r") as bordeaux:
         cities_data = json.load(bordeaux)
 
@@ -481,7 +481,7 @@ def PrintCode():
 
         # save the map into a geojson file
         maplocation = os.getcwd()
-        maplocation = os.path.join(maplocation, "Web_Scraping-main\\result", "map.json")
+        maplocation = os.path.join(maplocation, "Web_Scraping\\result", "map.json")
         with open(maplocation, 'w+') as f:
             json.dump(cities_data, f, indent=2)
 
