@@ -219,7 +219,7 @@ def PERSONALIZED_StartCodeClasse():
 # DEF of parsing
 ##########################################################################################################################################################################
 datalocation = os.getcwd()
-datalocation = os.path.join(datalocation, "Web_Scraping\\result", "data.json")
+datalocation = os.path.join(datalocation, "Web_Scraping/result", "data.json")
 
 def ExecuteCode(spans):
     # Export to a JSON file
