@@ -77,7 +77,7 @@ def ALL_StartCode():
                 print(http_status)
                     
                 # Parse the HTML content of the page
-                scraper = cloudscraper.create_scraper()
+                scraper = cloudscraper.create_scraper(delay=10, interpreter='nodejs')
                 response = scraper.get(URL).text
                 soup = BeautifulSoup(response, 'html.parser')
 
@@ -117,7 +117,7 @@ def ONE_StartCode(selected_website):
     else:
         try:
             # Parse the HTML content of the page
-            scraper = cloudscraper.create_scraper()
+            scraper = cloudscraper.create_scraper(delay=10, interpreter='nodejs')
             response = scraper.get(URL).text
             soup = BeautifulSoup(response, 'html.parser')
             # Parse only the content we want
@@ -152,7 +152,7 @@ def PERSONALIZED_StartCodeURL():
         showwarning(title="Attention", message="Connection au site impossible")
     else:
         # Parse the HTML content of the page
-        scraper = cloudscraper.create_scraper()
+        scraper = cloudscraper.create_scraper(delay=10, interpreter='nodejs')
         response = scraper.get(url_value_URL.get()).text
 
         soup = BeautifulSoup(response, 'html.parser')
@@ -171,7 +171,7 @@ def PERSONALIZED_StartCodeBalise():
         showwarning(title="Attention", message="Connection au site impossible")
     else:
         # Parse the HTML content of the page
-        scraper = cloudscraper.create_scraper()
+        scraper = cloudscraper.create_scraper(delay=10, interpreter='nodejs')
         response = scraper.get(url_value_Balise.get()).text
 
         soup = BeautifulSoup(response, 'html.parser')
@@ -192,7 +192,7 @@ def PERSONALIZED_StartCodeClasse():
         showwarning(title="Attention", message="Connection au site impossible")
     else:
         # Parse the HTML content of the page
-        scraper = cloudscraper.create_scraper()
+        scraper = cloudscraper.create_scraper(delay=10, interpreter='nodejs')
         response = scraper.get(url_value_Classe.get()).text
         
         soup = BeautifulSoup(response, 'html.parser')
@@ -219,7 +219,7 @@ def PERSONALIZED_StartCodeClasse():
 # DEF of parsing
 ##########################################################################################################################################################################
 datalocation = os.getcwd()
-datalocation = os.path.join(datalocation, "Web_Scraping\\result", "data.json")
+datalocation = os.path.join(datalocation, "Web_Scraping-main\\result", "data.json")
 
 def ExecuteCode(spans):
     # Export to a JSON file
@@ -423,7 +423,7 @@ def PrintCode():
 
     # Load the map of the cities from the JSON file
     bordeauxlocation = os.getcwd()
-    bordeauxlocation = os.path.join(bordeauxlocation, "Web_Scraping\\bin", "bordeaux.json")
+    bordeauxlocation = os.path.join(bordeauxlocation, "Web_Scraping-main\\bin", "bordeaux.json")
     with open(bordeauxlocation, "r") as bordeaux:
         cities_data = json.load(bordeaux)
 
@@ -481,7 +481,7 @@ def PrintCode():
 
         # save the map into a geojson file
         maplocation = os.getcwd()
-        maplocation = os.path.join(maplocation, "Web_Scraping\\result", "map.json")
+        maplocation = os.path.join(maplocation, "Web_Scraping-main\\result", "map.json")
         with open(maplocation, 'w+') as f:
             json.dump(cities_data, f, indent=2)
 
