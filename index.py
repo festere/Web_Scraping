@@ -481,7 +481,7 @@ def PrintCode():
 
         # save the map into a geojson file
         maplocation = os.getcwd()
-        maplocation = os.path.join(maplocation, "Web_Scraping\\result", "map.json")
+        maplocation = os.path.join(maplocation, "result", "map.json")
         with open(maplocation, 'w+') as f:
             json.dump(cities_data, f, indent=2)
 
