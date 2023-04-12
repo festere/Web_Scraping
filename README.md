@@ -38,5 +38,6 @@ Exportation des données suivantes:
 3. Installer git avec la commande `sudo apt install git`.
 4. Installer l'outil avec la commande `git clone https://github.com/festere/Web_Scraping.git`.
 5. Ouverture du dossier avec la commande `cd Web_Scraping`.
-6. Taper la commande `pip install -r requirements.txt` et appuyer sur entrée.
-7. Exécution du programme avec la commande `python3 index.py`.
+6. Taper la commande `sudo apt-get install python3-tk` et appuyer sur entrée.
+7. Taper la commande `pip install -r requirements.txt` et appuyer sur entrée.
+8. Exécution du programme avec la commande `python3 index.py`.
