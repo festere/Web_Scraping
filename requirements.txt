@@ -1,6 +1,5 @@
-folium
 geopandas
 customtkinter
 beautifulsoup4
-Unidecode
 cloudscraper
+alive-progress
