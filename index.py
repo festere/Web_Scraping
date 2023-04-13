@@ -61,8 +61,6 @@ def ALL_StartCode():
     spansList = []
     for website in websites:
         EnumerateWebsite = len(websites)
-        print(EnumerateWebsite)
-        print(count)
         if count == EnumerateWebsite:
             PrintCode()
         else:
