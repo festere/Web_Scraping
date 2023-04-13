@@ -10,15 +10,15 @@ Cet outil permet de récupérer des données sur des sites web (même ceux compo
 <br>
    
 Exportation des données suivantes:
-- Un fichier JSON pour les commantaires. (aussi affiché dans le GUI)
-- Un fichier JSON pour le nombre de fois que les villes ont été sitées. (aussi affiché dans le GUI)
-- Un fichier geoJSON pour une [heat map](https://geojson.io/#map=5.28/46.563/2.071) des villes sitées.
+- Un fichier JSON pour les commentaires. (aussi affiché dans le GUI)
+- Un fichier JSON pour le nombre de fois que les villes ont été citées. (aussi affiché dans le GUI)
+- Un fichier geoJSON pour une [heat map](https://geojson.io/#map=5.28/46.563/2.071) des villes citées.
 
 <br>
 <br>
 <br>
 
-## 2. Instalation
+## 2. Installation
 ### 2.1 Windows
 1. Installer la derniere version de [Python 3](https://www.python.org/downloads/).
 2. Installer l'outil de [Web_Scraping](https://github.com/festere/Web_Scraping/archive/refs/heads/main.zip).
@@ -26,8 +26,8 @@ Exportation des données suivantes:
 5. Verifier que le dernier fichier s'appelle bien `Web_Scraping` et non `Web_Scraping-main`.
 6. Ouvrir le dossier `Web_Scraping`.
 7. Faire un clic droit dans le dossier et cliquer sur "Ouvrir dans le terminal".
-8. Taper la commande `pip install -r requirements.txt` et appuyer sur entrée.
-9. Taper la commande `python3 index.py` et appuyer sur entrée.
+8. Taper la commande `pip install -r requirements.txt` et appuyer sur entrer.
+9. Taper la commande `python3 index.py` et appuyer sur entrer.
 
 <br>
 
@@ -37,6 +37,6 @@ Exportation des données suivantes:
 3. Installer git avec la commande `sudo apt install git`.
 4. Installer l'outil avec la commande `git clone https://github.com/festere/Web_Scraping.git`.
 5. Ouverture du dossier avec la commande `cd Web_Scraping`.
-6. Taper la commande `sudo apt-get install python3-tk` et appuyer sur entrée.
-7. Taper la commande `pip install -r requirements.txt` et appuyer sur entrée.
+6. Taper la commande `sudo apt-get install python3-tk` et appuyer sur entrer.
+7. Taper la commande `pip install -r requirements.txt` et appuyer sur entrer.
 8. Exécution du programme avec la commande `python3 index.py`.
