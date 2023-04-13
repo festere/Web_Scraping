@@ -8,6 +8,7 @@ import customtkinter
 import os
 import cloudscraper
 import urllib3
+from alive_progress import alive_it
 urllib3.disable_warnings()
 
 
@@ -52,7 +53,7 @@ def check_checkbox():
 ##########################################################################################################################################################################
 def ALL_StartCode():
     count = 1
-    for website in websites:
+    for website in alive_it(websites):
         EnumerateWebsite = len(websites)
         if count == EnumerateWebsite:
             PrintCode()
@@ -321,7 +322,7 @@ def PrintCode():
         Ambès_count = 0
 
         # Check if each word is in the list, if so: add 1 to the count      
-        for word in words:
+        for word in alive_it(words):
             if word in bus:
                 bus_count += 1
             elif word in tram:
@@ -449,11 +450,11 @@ def PrintCode():
         }
 
         #add fill color #ffffff to all the features
-        for feature in cities_data['features']:
+        for feature in alive_it(cities_data['features']):
             feature['properties']['fill'] = "#ffffff"
 
         #change the fill color of the features with the count
-        for city, feature_idxs in count_dict.items():
+        for city, feature_idxs in alive_it(count_dict.items()):
             feature = cities_data['features'][feature_idxs]
             if city == 1:
                 feature['properties']['fill'] = "#FFDCDC"
@@ -478,7 +479,7 @@ def PrintCode():
 
 
         with open(datalocation, "r", encoding="utf-8") as json_str:
-            for line in json_str:
+            for line in alive_it(json_str):
                 label.textbox2.insert("0.0", line + "\n") # Display the results in the GUI
 
     showinfo(title="Attention", message="Scraping terminé")
