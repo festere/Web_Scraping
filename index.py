@@ -58,7 +58,6 @@ def check_checkbox():
 ##########################################################################################################################################################################
 def ALL_StartCode():
     count = 1
-    spansList = []
     for website in websites:
         EnumerateWebsite = len(websites)
         if count == EnumerateWebsite:
