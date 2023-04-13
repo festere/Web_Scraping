@@ -1,17 +1,11 @@
-import requests
 import json
 from bs4 import BeautifulSoup
-import urllib3
 from http.client import responses
-from unidecode import unidecode
-from collections import Counter
-import folium
 import geopandas as gpd
 from tkinter import *
 from tkinter.messagebox import *
 import customtkinter
 import os
-import random
 import cloudscraper
 import urllib3
 urllib3.disable_warnings()
