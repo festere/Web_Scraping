@@ -27,7 +27,8 @@ Exportation des données suivantes:
 6. Ouvrir le dossier `Web_Scraping`.
 7. Faire un clic droit dans le dossier et cliquer sur "Ouvrir dans le terminal".
 8. Taper la commande `pip install -r requirements.txt` et appuyer sur entrer.
-9. Taper la commande `python3 index.py` et appuyer sur entrer.
+9. Exécution du programme avec la commande `python3 index.py`.
+10. Utiliser [geo JSON](https://geojson.io/#map=5.28/46.563/2.071) pour visualiser la heat map.
 
 <br>
 
@@ -40,3 +41,4 @@ Exportation des données suivantes:
 6. Taper la commande `sudo apt-get install python3-tk` et appuyer sur entrer.
 7. Taper la commande `pip install -r requirements.txt` et appuyer sur entrer.
 8. Exécution du programme avec la commande `python3 index.py`.
+9. Utiliser [geo JSON](https://geojson.io/#map=5.28/46.563/2.071) pour visualiser la heat map.
