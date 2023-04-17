@@ -11,7 +11,6 @@ Cet outil permet de récupérer des données sur des sites web (même ceux compo
    
 Exportation des données suivantes:
 - Un fichier JSON pour les commentaires. (aussi affiché dans le GUI)
-- Un fichier JSON pour le nombre de fois que les villes ont été citées. (aussi affiché dans le GUI)
 - Un fichier geoJSON pour une [heat map](https://geojson.io/#map=5.28/46.563/2.071) des villes citées.
 
 <br>
