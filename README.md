@@ -1,6 +1,7 @@
 ## 1. Description
-GUI tool to scrap a specific website and can bypass the basic protections of Cloudflare and 
-This tool has the ability to export a website in 2 different ways:
+GUI tool to scrap a specific website and bypass the basic bot protections of Cloudflare and datadome.
+<br>
+It has the ability to export a website in 2 different ways:
 Manually (directly in the interface):
 - All the website's code
 - Only the div of the website
