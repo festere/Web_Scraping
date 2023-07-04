@@ -1,12 +1,13 @@
 ## 1. Description
-This tool has the ability to export a website in 2 different way:
-Manually (directly in the inteface):
+GUI tool to scrap a specific website and can bypass the basic protections of Cloudflare and 
+This tool has the ability to export a website in 2 different ways:
+Manually (directly in the interface):
 - All the website's code
-- Only the div of the webiste
+- Only the div of the website
 - Only the div with a certain class of the website
 
 Automatic (in the code):
-- At the beining of the code there is a list which can be modified to scrap multiple desired website
+- At the beginning of the code there is a list which can be modified to scrap multiple desired website
 
 <br>
 <br>
