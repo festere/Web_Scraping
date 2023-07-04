@@ -1,3 +1,10 @@
+![](https://img.shields.io/badge/websites-red?style=for-the-badge)
+![](https://img.shields.io/badge/windows-blue?style=for-the-badge)
+![](https://img.shields.io/badge/linux-green?style=for-the-badge)
+![](https://img.shields.io/badge/unix-gray?style=for-the-badge)
+
+<br>
+
 # Table of contents
 1. [Disclaimer](#Disclaimer)
 2. [Description](#Description)
