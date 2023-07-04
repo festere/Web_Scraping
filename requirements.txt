@@ -1,4 +1,3 @@
-geopandas
 customtkinter
 beautifulsoup4
 cloudscraper
